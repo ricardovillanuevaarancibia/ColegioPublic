@@ -1,0 +1,47 @@
+﻿@model ColegioPublic.ViewsModel.CursoVM.AddEditCursoViewModel
+@{
+    ViewBag.Title = "Agregar Curso";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">@(Model.cursoId.HasValue ? "Modificar " : "Editar ")Curso</h4>
+                <form class="form" action="@Url.Action("AddEditCurso","Curso")" method="post">
+                    @Html.HiddenFor(x => x.cursoId)
+                    <div class="form-group mt-5 row">
+                        @Html.LabelFor(x => x.nombre, new { @class = "col-2 col-form-label" })
+
+                        <div class="col-10">
+                            @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group mt-5 row">
+                        @Html.LabelFor(x => x.image, new { @class = "col-2 col-form-label" })
+
+                        <div class="col-10">
+                            @Html.TextBoxFor(x => x.image, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                            <button type="button" class="btn btn-dark">Cancel</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(function () {
+
+        });
+    </script>
+}

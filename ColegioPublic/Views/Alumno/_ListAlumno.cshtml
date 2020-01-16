@@ -1,0 +1,47 @@
+﻿@model ColegioPublic.ViewsModel.AlumnoVM._ListAlumnoViewModel
+@using PagedList.Mvc;
+@using PagedList;
+@using ColegioPublic.Helper;
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Dni</th>
+            <th>Fecha Nacimiento</th>
+            <th>Acciones</th>
+        
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model.LstRegistro.Count > 0)
+        {
+            foreach (var item in Model.LstRegistro)
+            {
+                <tr>
+                    <td>@item.Nombre</td>
+                    <td>@item.ApellidoPaterno</td>
+                    <td>@item.ApellidoMaterno</td>
+                    <td>@item.Dni</td>
+                    <td>@item.FechaNacimiento</td>
+           
+                    <td><div class="input-group-append">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(696px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                        <a class="dropdown-item" href="@Url.Action("AddEditAlumno","Alumno", new {idAlumno = item.AlumnoId})">Editar</a>
+                        <a class="dropdown-item" href="@Url.Action("AddEditMatricula","Matricula", new {idAlumno = item.AlumnoId})">Matricular</a>
+                        <a class="dropdown-item" href="@Url.Action("AddEditAlumno","Alumno", new {idAlumno = item.AlumnoId})">Eliminar</a>
+                    </div>
+                    </div>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+@Html.PagedListPager(Model.LstRegistro, p => Url.Action("_ListAlumno", new { p = p }), PaginationHelper.AjaxPagerOptionsDefault)
+

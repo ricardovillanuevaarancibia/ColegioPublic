@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/assets/images/favicon.png">
+    <title>Monster Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link href="~/Content/assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <link href="~/Content/main/css/style.css" rel="stylesheet">
+    <link href="~/Content/main/css/colors/blue.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/PagedList.css" />
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+
+    <div id="main-wrapper">
+
+        @{Html.RenderPartial("_Header");}
+        @{Html.RenderPartial("_SideBar");}
+        <div class="page-wrapper" style="min-height: 686px;">
+            <div class="container-fluid">
+
+                @Html.Raw(Html.BuildBreadcrumbNavigation())
+                @RenderBody()
+            </div>
+        </div>
+
+        <footer class="footer">
+            © 2019 Monster Admin by wrappixel.com
+        </footer>
+
+    </div>
+
+    <script src="~/Content/assets/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Content/assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="~/Content/assets//plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/main/js/jquery.slimscroll.js"></script>
+    <script src="~/Content/main/js/waves.js"></script>
+    <script src="~/Content/main/js/sidebarmenu.js"></script>
+    <script src="~/Content/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="~/Content/main/js/custom.min.js"></script>
+
+    <script src="~/Content/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="~/Content/main/js/dashboard1.js"></script>
+    <script src="~/Content/main/js/toastr.js"></script>
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    @*<script type="text/javascript" src="~/Scripts/jquery-3.4.1.js"></script>*@
+    <script type="text/javascript" src="~/Scripts/moment.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.js"></script>
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.css"> -->
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker-standalone.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+    -->
+    <link rel="stylesheet" href="~/Content/bootstrap-datetimepicker.css" />
+
+
+</body>
+</html>

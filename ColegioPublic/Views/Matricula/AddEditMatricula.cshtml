@@ -1,0 +1,73 @@
+﻿@model ColegioPublic.ViewsModel.MatriculaVM.AddEditMatriculaViewModel
+@{
+    ViewBag.Title = "Agregar Matricula";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">@(Model.alumnoId.HasValue ? "Modificar " : "Editar ")Matricula</h4>
+                <form class="form" action="@Url.Action("AddEditMatricula","Matricula")" method="post">
+                    @Html.HiddenFor(x => x.matriculaId)
+                    @Html.HiddenFor(x => x.alumnoId)
+                    <div class="form-group row">
+                        @Html.LabelFor(x => x.gradoAcademicoId, new { @class = "col-sm-2 col-form-label" })
+
+                        <div class="col-sm-10">
+                            @Html.DropDownListFor(x => x.gradoAcademicoId, new SelectList(Model.LstGradoAcademico, "Value", "Text"), new { @class = "custom-select" })
+
+                        </div>
+                        @Html.ValidationMessageFor(x => x.gradoAcademicoId)
+                    </div>
+
+
+                    <div class="form-group mt-5 row">
+                        @Html.LabelFor(x => x.codigoMatricula, new { @class = "col-2 col-form-label" })
+
+                        <div class="col-10">
+                            @Html.TextBoxFor(x => x.codigoMatricula, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(x => x.ApellidosCompletos, new { @class = "col-2 col-form-label" })
+
+                        <div class="col-10">
+                            @Html.TextBoxFor(x => x.ApellidosCompletos, new { @class = "form-control" })
+                        </div>
+                    </div>
+                   
+                    <div class="form-group row">
+                        @Html.LabelFor(x => x.dniAlumno, new { @class = "col-2 col-form-label" })
+
+                        <div class="col-10">
+                            @Html.TextBoxFor(x => x.dniAlumno, new { @class = "form-control" })
+                        </div>
+                    </div>
+        
+                    <div class="form-actions">
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                            <button type="button" class="btn btn-dark">Cancel</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(function () {
+
+            $(".datetimepicker1").datetimepicker({
+                format: 'DD-MM-YYYY',
+
+             });
+        });
+    </script>
+}
+
+
