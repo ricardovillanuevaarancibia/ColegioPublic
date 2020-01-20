@@ -1,0 +1,25 @@
+﻿@model MvcTest.Models.Company
+
+
+<div>
+    @Html.LabelFor(m => m.Name)
+    @Html.EditorFor(m => m.Name)
+</div>
+<fieldset>
+    <legend>Employees</legend>
+    <div id="new-Employee">
+        @foreach (var Employee in Model.Employees)
+        {
+            Html.RenderPartial("_Employee", Employee);
+        }
+    </div>
+    <div>
+        <input type="button" id="addemployee" name="addemployee" value="Add Employee" />
+        <br />
+    </div>
+    <br />
+  
+</fieldset>
+<div>
+    <input type="submit" value="Submit" />
+</div>

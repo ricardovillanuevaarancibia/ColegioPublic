@@ -26,6 +26,7 @@ namespace Data.Model
         public string ApellidoMaterno { get; set; }
         public string Dni { get; set; }
         public Nullable<int> EstadoId { get; set; }
+        public string RutaFoto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatriculaCursoProfesor> MatriculaCursoProfesor { get; set; }

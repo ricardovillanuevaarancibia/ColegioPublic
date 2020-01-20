@@ -32,6 +32,7 @@ namespace Data.Model
         public string Dni { get; set; }
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public int EstadoId { get; set; }
+        public string RutaFoto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AlumnoAula> AlumnoAula { get; set; }

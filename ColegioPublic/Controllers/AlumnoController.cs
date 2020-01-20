@@ -42,6 +42,12 @@ namespace ColegioPublic.Controllers
                     TryUpdateModel(model);
                     return View(model);
                 }
+                if (model.Image != null)
+                {
+                    string archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.Image.FileName).ToLower();
+                    model.Image.SaveAs(Server.MapPath("~/File/Alumno/" + archivo));
+                    model.RutaFoto = Server.MapPath("~/File/Alumno/" + archivo);
+                }
 
                 AddEditAlumnoViewModel addEdit = new AddEditAlumnoViewModel();
                 addEdit.AddEdit(_CargarDatosContext, model);

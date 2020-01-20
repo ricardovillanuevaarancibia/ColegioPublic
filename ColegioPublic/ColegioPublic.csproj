@@ -152,9 +152,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
-    <Compile Include="Areas\Profesor\ProfesorAreaRegistration.cs" />
     <Compile Include="Controllers\AlumnoController.cs" />
     <Compile Include="Controllers\AsistenciaController.cs" />
     <Compile Include="Controllers\AulaController.cs" />
@@ -195,15 +192,15 @@
     <Compile Include="ViewsModel\CursoVM\AddEditCursoViewModel.cs" />
     <Compile Include="ViewsModel\CursoVM\IndexCursoViewModel.cs" />
     <Compile Include="ViewsModel\CursoVM\_ListCursoViewModel.cs" />
-    <Compile Include="ViewsModel\Examen\AddEditExamenViewModel.cs" />
-    <Compile Include="ViewsModel\Examen\IndexExamenViewModel.cs" />
-    <Compile Include="ViewsModel\Examen\_ListExamenViewModel.cs" />
+    <Compile Include="ViewsModel\ExamenVM\AddEditExamenViewModel.cs" />
+    <Compile Include="ViewsModel\ExamenVM\IndexExamenViewModel.cs" />
+    <Compile Include="ViewsModel\ExamenVM\_ListExamenViewModel.cs" />
     <Compile Include="ViewsModel\GradoAcademico\AddEditGradoAcademicoViewModel.cs" />
     <Compile Include="ViewsModel\GradoAcademico\IndexGradoAcademicoViewModel.cs" />
     <Compile Include="ViewsModel\GradoAcademico\_ListGradoAcademicoViewModel.cs" />
-    <Compile Include="ViewsModel\Horario\AddEditHorarioViewModel.cs" />
-    <Compile Include="ViewsModel\Horario\IndexHorarioViewModel.cs" />
-    <Compile Include="ViewsModel\Horario\_ListHorarioViewModel.cs" />
+    <Compile Include="ViewsModel\HorarioVM\AddEditHorarioViewModel.cs" />
+    <Compile Include="ViewsModel\HorarioVM\IndexHorarioViewModel.cs" />
+    <Compile Include="ViewsModel\HorarioVM\_ListHorarioViewModel.cs" />
     <Compile Include="ViewsModel\MatriculaVM\AddEditMatriculaViewModel.cs" />
     <Compile Include="ViewsModel\MatriculaVM\IndexMatriculaViewModel.cs" />
     <Compile Include="ViewsModel\MatriculaVM\_ListMatriculaViewModel.cs" />
@@ -990,13 +987,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Profesor\Views\web.config" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1018,6 +1008,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1140,7 +1131,6 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Alumno\AddEditAlumno.cshtml" />
-    <Content Include="Views\Profesor\_ListAlumno.cshtml" />
     <Content Include="Views\Profesor\Index.cshtml" />
     <Content Include="Views\Profesor\AddEditProfesor.cshtml" />
     <Content Include="Views\Profesor\_ListProfesor.cshtml" />
@@ -1153,21 +1143,22 @@
     <Content Include="Views\Matricula\Index.cshtml" />
     <Content Include="Views\Matricula\_ListMatricula.cshtml" />
     <Content Include="Views\Matricula\AddEditMatricula.cshtml" />
+    <Content Include="Views\Horario\Index.cshtml" />
+    <Content Include="Views\Horario\Horario.cshtml" />
+    <Content Include="Views\Examen\Index.cshtml" />
+    <Content Include="Views\Examen\Examen.cshtml" />
+    <Content Include="Views\Examen\AddEditExamen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\ViewModel\" />
-    <Folder Include="Areas\Profesor\Controllers\" />
-    <Folder Include="Areas\Profesor\Models\" />
-    <Folder Include="Areas\Profesor\Views\Shared\" />
+    <Folder Include="Areas\" />
+    <Folder Include="File\Alumno\" />
+    <Folder Include="File\Profesor\" />
     <Folder Include="ViewsModel\Permiso\" />
     <Folder Include="Views\Asistencia\" />
     <Folder Include="Views\Aula\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Examen\" />
     <Folder Include="Views\GradoAcademico\" />
-    <Folder Include="Views\Horario\" />
     <Folder Include="Views\Nota\" />
     <Folder Include="Views\Notificacion\" />
     <Folder Include="Views\Permiso\" />

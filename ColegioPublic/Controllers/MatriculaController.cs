@@ -51,7 +51,7 @@ namespace ColegioPublic.Controllers
                 var response = await client.PostAsync(url, data);
                 string result = response.Content.ReadAsStringAsync().Result;
 
-                return  RedirectToAction("Index");
+                return  RedirectToAction("Index",new {q = model.alumnoId });
             }
         }
     }

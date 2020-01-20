@@ -1,0 +1,118 @@
+﻿@model ColegioPublic.ViewsModel.HorarioVM.AddEditHorarioViewModel
+
+<div class="card-body">
+
+    <form class="form" action="@Url.Action("AddEditHorario","Horario")" method="post">
+
+        <div class="form-group row">
+            @Html.HiddenFor(x => x.CursoId)
+            @Html.HiddenFor(x => x.GradoAcademicoId)
+            @Html.HiddenFor(x => x.HorarioId)
+
+            @Html.Label("Lunes", new { @class = "col-2 col-form-label" })
+
+            @Html.Label("Inicio", new { @class = "col-2 col-form-label" })
+
+            <div class="col-2">
+                @Html.TextBoxFor(x => x.LuneshoraInicio, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+            @Html.Label("Fin", new { @class = "col-2 col-form-label" })
+            <div class="col-2">
+
+                @Html.TextBoxFor(x => x.LunesHoraFin, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.Label("Martes", new { @class = "col-2 col-form-label" })
+            @Html.Label("Inicio", new { @class = "col-2 col-form-label" })
+
+            <div class="col-2">
+
+                @Html.TextBoxFor(x => x.MartesHoraInicio, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+            @Html.Label("Fin", new { @class = "col-2 col-form-label" })
+            <div class="col-2">
+
+                @Html.TextBoxFor(x => x.MartesHoraFin, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.Label("Miercoles", new { @class = "col-2 col-form-label" })
+            @Html.Label("Inicio", new { @class = "col-2 col-form-label" })
+            <div class="col-2">
+
+                @Html.TextBoxFor(x => x.MiercolesHoraInicio, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+            @Html.Label("Fin", new { @class = "col-2 col-form-label" })
+            <div class="col-2">
+
+                @Html.TextBoxFor(x => x.MiercolesHoraFin, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+        </div>
+        <div class="form-group row">
+
+            @Html.Label("Jueves", new { @class = "col-2 col-form-label" })
+            @Html.Label("Inicio", new { @class = "col-2 col-form-label" })
+
+            <div class="col-2">
+
+                @Html.TextBoxFor(x => x.JuevesHoraInicio, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+            @Html.Label("Fin", new { @class = "col-2 col-form-label" })
+            <div class="col-2">
+
+                @Html.TextBoxFor(x => x.JuevesHoraFin, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+        </div>
+        <div class="form-group row">
+
+            @Html.Label("Viernes", new { @class = "col-2 col-form-label" })
+            @Html.Label("Inicio", new { @class = "col-2 col-form-label" })
+            <div class="col-2">
+
+                @Html.TextBoxFor(x => x.ViernesHoraInicio, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+            @Html.Label("Fin", new { @class = "col-2 col-form-label" })
+            <div class="col-2">
+
+                @Html.TextBoxFor(x => x.ViernesHoraFin ,"{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.Label("Sábado", new { @class = "col-2 col-form-label" })
+            @Html.Label("Inicio", new { @class = "col-2 col-form-label" })
+            <div class="col-2">
+
+
+                @Html.TextBoxFor(x => x.SabadoHoraInicio, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+            @Html.Label("Fin", new { @class = "col-2 col-form-label" })
+            <div class="col-2">
+
+                @Html.TextBoxFor(x => x.SabadoHoraFin, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.Label("Domingo", new { @class = "col-2 col-form-label" })
+            @Html.Label("Inicio", new { @class = "col-2 col-form-label" })
+            <div class="col-2">
+
+                @Html.TextBoxFor(x => x.DomingoHoraInicio, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+            @Html.Label("Fin", new { @class = "col-2 col-form-label" })
+            <div class="col-2">
+
+                @Html.TextBoxFor(x => x.DomingoHoraFin, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <div class="card-body">
+                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                <button type="button" class="btn btn-dark">Cancel</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+

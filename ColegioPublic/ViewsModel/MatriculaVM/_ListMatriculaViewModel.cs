@@ -22,7 +22,8 @@ namespace ColegioPublic.ViewsModel.MatriculaVM
 
             var query = context._context.Matricula.AsQueryable();
             if (model.q.HasValue)
-                query = query.Where(x => x.AlumnoId == this.q);
+              query = query.Where(x => x.AlumnoId == q);
+
             LstRegistro = query.OrderBy(x => x.MatriculaId).ToPagedList(this.p, 10);
         }
     }

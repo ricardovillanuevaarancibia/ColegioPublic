@@ -17,8 +17,20 @@ namespace Data.Model
         public int HorarioId { get; set; }
         public Nullable<int> GradoAcademicoId { get; set; }
         public Nullable<int> CursoId { get; set; }
-        public Nullable<System.TimeSpan> HoraInicio { get; set; }
-        public Nullable<System.TimeSpan> HoraFin { get; set; }
+        public Nullable<System.DateTime> LunesHoraInicio { get; set; }
+        public Nullable<System.DateTime> LunesHoraFin { get; set; }
+        public Nullable<System.DateTime> MartesHoraInicio { get; set; }
+        public Nullable<System.DateTime> MartesHoraFin { get; set; }
+        public Nullable<System.DateTime> MiercolesHoraInicio { get; set; }
+        public Nullable<System.DateTime> MiercolesHoraFin { get; set; }
+        public Nullable<System.DateTime> JuevesHoraInicio { get; set; }
+        public Nullable<System.DateTime> JuevesHoraFin { get; set; }
+        public Nullable<System.DateTime> ViernesHoraInicio { get; set; }
+        public Nullable<System.DateTime> ViernesHoraFin { get; set; }
+        public Nullable<System.DateTime> SabadoHoraInicio { get; set; }
+        public Nullable<System.DateTime> SabadoHoraFin { get; set; }
+        public Nullable<System.DateTime> DomingoHoraInicio { get; set; }
+        public Nullable<System.DateTime> DomingoHoraFIn { get; set; }
         public bool Lunes { get; set; }
         public bool Martes { get; set; }
         public bool Miercoles { get; set; }

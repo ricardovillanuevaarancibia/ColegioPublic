@@ -11,17 +11,19 @@ namespace ColegioPublic.ViewsModel.AlumnoVM
 {
     public class AddEditAlumnoViewModel
     {
-        public int ? AlumnoId { get; set; }
+        public int? AlumnoId { get; set; }
         public string Nombre { get; set; }
-        [Display(Name ="Apellido Paterno")]
+        [Display(Name = "Apellido Paterno")]
         public string ApellidoPaterno { get; set; }
-        [Display(Name="Apellido Materno")]
-        public string  ApellidoMaterno { get; set; }
+        [Display(Name = "Apellido Materno")]
+        public string ApellidoMaterno { get; set; }
         public string Dni { get; set; }
-        [Display(Name="Fecha de Nacimiento")]
-        public  DateTime ? FechaNacimiento { get; set; }
+        [Display(Name = "Fecha de Nacimiento")]
+        public DateTime? FechaNacimiento { get; set; }
         public int EstadoId { get; set; }
-
+        public HttpPostedFileBase Image { get; set; }
+        [Required]
+        public string RutaFoto { get; set; }
         public void Fill(CargarDatosContext context,int ? alumnoId)
         {
             var alumno = context._context.Alumno.Find(alumnoId);
@@ -33,6 +35,7 @@ namespace ColegioPublic.ViewsModel.AlumnoVM
                 this.ApellidoMaterno = alumno.ApellidoMaterno;
                 this.Dni = alumno.Dni;
                 this.FechaNacimiento = alumno.FechaNacimiento.Value;
+                this.RutaFoto = alumno.RutaFoto;
             }
         }
         public void AddEdit(CargarDatosContext context, AddEditAlumnoViewModel model)
@@ -41,6 +44,11 @@ namespace ColegioPublic.ViewsModel.AlumnoVM
             {
                 try
                 {
+
+               
+
+
+
                     var alumno = context._context.Alumno.Find(model.AlumnoId);
 
                     if (alumno == null)
@@ -54,6 +62,7 @@ namespace ColegioPublic.ViewsModel.AlumnoVM
                     alumno.ApellidoMaterno = model.ApellidoMaterno;
                     alumno.Dni = model.Dni;
                     alumno.FechaNacimiento = model.FechaNacimiento;
+                    alumno.RutaFoto= model.RutaFoto;
                     alumno.EstadoId = 1;
                     context._context.SaveChanges();
                     ts.Complete();

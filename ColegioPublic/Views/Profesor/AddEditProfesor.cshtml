@@ -1,14 +1,14 @@
-﻿@model ColegioPublic.ViewsModel.AlumnoVM.AddEditAlumnoViewModel
+﻿@model ColegioPublic.ViewsModel.ProfesorVM.AddEditProfesorViewModel
 @{
-    ViewBag.Title = "Agregar Alumno";
+    ViewBag.Title = "Agregar Profesor";
 }
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">@(Model.AlumnoId.HasValue ? "Modificar " : "Editar ")Alumno</h4>
-                <form class="form" action="@Url.Action("AddEditAlumno","Alumno")" method="post">
-                    @Html.HiddenFor(x => x.AlumnoId)
+                <h4 class="card-title">@(Model.ProfesorId.HasValue ? "Modificar " : "Editar ")Profesor</h4>
+                <form class="form" action="@Url.Action("AddEditProfesor","Profesor")" method="post" enctype="multipart/form-data">
+                    @Html.HiddenFor(x => x.ProfesorId)
                     <div class="form-group mt-5 row">
                         @Html.LabelFor(x => x.Nombre, new { @class = "col-2 col-form-label" })
 
@@ -37,13 +37,17 @@
                             @Html.TextBoxFor(x => x.Dni, new { @class = "form-control" })
                         </div>
                     </div>
-                    <div class="form-group row">
-
-                        @Html.LabelFor(x => x.FechaNacimiento, new { @class = "col-2 col-form-label" })
-
-                        <div class="col-10">
-
-                            @Html.TextBoxFor(x => x.FechaNacimiento, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+             
+                    <div class="form-group">
+                        <label>Custom File upload</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Imagen Profesor</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="Image" name="Image">
+                                <label class="custom-file-label" id="nameFile" for="Image">Choose file</label>
+                            </div>
                         </div>
                     </div>
                     <div class="form-actions">
@@ -67,7 +71,11 @@
             $(".datetimepicker1").datetimepicker({
                 format: 'DD-MM-YYYY',
 
-             });
+            });
+                document.getElementById('Image').onchange = function () {
+              console.log(this.value);
+              document.getElementById('nameFile').innerHTML = document.getElementById('Image').files[0].name;
+            }
         });
     </script>
 }

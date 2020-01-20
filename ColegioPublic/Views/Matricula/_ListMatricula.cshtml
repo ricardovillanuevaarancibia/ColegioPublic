@@ -38,6 +38,6 @@
 
     </tbody>
 </table>
-@Html.PagedListPager(Model.LstRegistro, p => Url.Action("_ListMatricula", new { p = p }), PaginationHelper.AjaxPagerOptionsDefault)
+@Html.PagedListPager(Model.LstRegistro, p => Url.Action("_ListMatricula", new { p = p,model = Model }), PaginationHelper.AjaxPagerOptionsDefault)
 
 

@@ -1,11 +1,11 @@
-﻿@model ColegioPublic.ViewsModel.AlumnoVM.IndexAlumnoViewModel
+﻿@model ColegioPublic.ViewsModel.ProfesorVM.IndexProfesorViewModel
 @{
-    ViewBag.Title = "Lista Alumno";
+    ViewBag.Title = "Lista Profesor";
 }
 
-<h2>Lista de Alumnos</h2>
+<h2>Lista de Profesores</h2>
 
-@using (Ajax.BeginForm("_ListAlumno", "Alumno", new AjaxOptions
+@using (Ajax.BeginForm("_ListProfesor", "Profesor", new AjaxOptions
 {//GetPatients is name of method in PatientController
     InsertionMode = InsertionMode.Replace, //target element(#patientList) will be replaced
     UpdateTargetId = "paged-section",
@@ -22,11 +22,11 @@
 }
 <hr />
 <div class="button-group text-right">
-    <a href="@Url.Action("AddEditAlumno","Alumno")" class="btn btn-success"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Nuevo Alumno</a>
+    <a href="@Url.Action("AddEditProfesor","Profesor")" class="btn btn-success"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Nuevo Profesor</a>
 </div>
 
 <div class="table-responsive" id="paged-section">
-    @{Html.RenderAction("_ListAlumno", Model);}
+    @{Html.RenderAction("_ListProfesor", Model);}
 </div>
 
 
