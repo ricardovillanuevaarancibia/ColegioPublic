@@ -1,0 +1,39 @@
+﻿@model Entel.SIOYM.Web.Areas.Inventory.Models.ProductoMwEntity
+
+<tr>
+    @using (Html.BeginCollectionItem("LstProductoMwFarEnd"))
+    {
+        <td>
+            <a href="#" class="text-danger" data-delete-item="tr"><i class="fa fa-times"></i></a>
+        </td>
+        <td>
+            @Html.HiddenFor(m => m.ProductoId)
+            @Html.HiddenFor(m => m.ProductoIduId)
+            @Html.HiddenFor(m => m.ProductoMwId)
+            @Html.HiddenFor(m => m.EnlaceMicroondasId)
+            @Html.DropDownListFor(x => x.MarcaId, new SelectList(Model.LstMarca, "Value", "Text"), "[ - Seleccione - ]", new { @class = "form-control form-control-sm", @data_target = "ModeloId", @data_dropdown_select = string.Empty, @data_tipo_producto = $"{ConstantHelpers.TIPO_GENERICO.TIPO_PRODUCTO_ANTENA_MICROONDAS}", @data_url = Url.Action("GetLstModeloByMarca", "Json", new { Area = string.Empty }) })
+        </td>
+        
+            var AlturaEdificioAntena = Model.SitioAlturaEdificio > 0 ? Model.SitioAlturaEdificio * 0.75M : 0M;
+        
+
+        <td>
+            @Html.DropDownListFor(m => m.ModeloId, new SelectList(Model.LstModelo, "Value", "Text"), "[ - Modelo - ]", new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.ModeloId)
+        </td>
+  
+        <td>
+            @Html.TextBoxFor(m => m.NumeroSerie,new { @class = "form-control form-control-sm num-serMW " + Model.ColorError, placeholder = "Numero de serie", TipoProducto =ConstantHelpers.TIPO_GENERICO.TIPO_PRODUCTO_ANTENA_MICROONDAS })
+            @Html.ValidationMessageFor(x => x.NumeroSerie)
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.Azimuth, new { @class = "form-control form-control-sm", placeholder = "Azimuth", Type = "number", @step = "1" })
+            @Html.ValidationMessageFor(x => x.Azimuth)
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.Altura, new { @class = "form-control form-control-sm", placeholder = "Altura", @data_val_range_max = (int)(Model.SitioAlturaEdificio + Model.SitioAlturaTorre + 3), @data_val_range_min =(int) AlturaEdificioAntena, Type = "any", @step = "1" })
+            @Html.ValidationMessageFor(x => x.Altura)
+        </td>
+    }
+</tr>
+

@@ -1,51 +1,29 @@
-﻿@model ColegioPublic.ViewsModel.AlumnoVM.AddEditAlumnoViewModel
+﻿@model ColegioPublic.ViewsModel.UserVM
 @{
-    ViewBag.Title = "Agregar Alumno";
+    ViewBag.Title = "Agregar Usuario ";
 }
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">@(Model.AlumnoId.HasValue ? "Modificar " : "Editar ")Alumno</h4>
-                <form class="form" action="@Url.Action("AddEditAlumno","Alumno")" method="post">
-                    @Html.HiddenFor(x => x.AlumnoId)
+                <h4 class="card-title">@(Model.cursoId.HasValue ? "Modificar " : "Editar ")Usuario </h4>
+                <form class="form" action="@Url.Action("AddEditCurso","Curso")" method="post">
+                    @Html.HiddenFor(x => x.ac)
                     <div class="form-group mt-5 row">
-                        @Html.LabelFor(x => x.Nombre, new { @class = "col-2 col-form-label" })
+                        @Html.LabelFor(x => x.nombre, new { @class = "col-2 col-form-label" })
 
                         <div class="col-10">
-                            @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
                         </div>
                     </div>
-                    <div class="form-group row">
-                        @Html.LabelFor(x => x.ApellidoPaterno, new { @class = "col-2 col-form-label" })
+                    <div class="form-group mt-5 row">
+                        @Html.LabelFor(x => x.image, new { @class = "col-2 col-form-label" })
 
                         <div class="col-10">
-                            @Html.TextBoxFor(x => x.ApellidoPaterno, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.image, new { @class = "form-control" })
                         </div>
                     </div>
-                    <div class="form-group row">
-                        @Html.LabelFor(x => x.ApellidoMaterno, new { @class = "col-2 col-form-label" })
 
-                        <div class="col-10">
-                            @Html.TextBoxFor(x => x.ApellidoMaterno, new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        @Html.LabelFor(x => x.Dni, new { @class = "col-2 col-form-label" })
-
-                        <div class="col-10">
-                            @Html.TextBoxFor(x => x.Dni, new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group row">
-
-                        @Html.LabelFor(x => x.FechaNacimiento, new { @class = "col-2 col-form-label" })
-
-                        <div class="col-10">
-
-                            @Html.TextBoxFor(x => x.FechaNacimiento, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
-                        </div>
-                    </div>
                     <div class="form-actions">
                         <div class="card-body">
                             <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
@@ -64,10 +42,6 @@
 
         $(function () {
 
-            $(".datetimepicker1").datetimepicker({
-                format: 'DD-MM-YYYY',
-
-             });
         });
     </script>
 }

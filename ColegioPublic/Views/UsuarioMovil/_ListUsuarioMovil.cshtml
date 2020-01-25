@@ -1,0 +1,43 @@
+﻿@model ColegioPublic.ViewsModel.UsuarioMovilVM._ListUsuarioMovilViewModel
+@using PagedList.Mvc;
+@using PagedList;
+@using ColegioPublic.Helper;
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.LstRegistro.Count > 0)
+        {
+            foreach (var item in Model.LstRegistro)
+            {
+                <tr>
+                    <td>@item.Nombre</td>
+                    <td>@($"{item.ApellidosP} {item.ApellidosM}")</td>
+                    <td>@item.Correo</td>
+                    <td>@item.Telefono</td>
+                    <td>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(696px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                <a class="dropdown-item" href="@Url.Action("AddEditUsuarioMovil","UsuarioMovil", new {UserId = item.UsuarioId})">Editar</a>
+                                <a class="dropdown-item" href="@Url.Action("Delete","UsuarioMovil", new {UserId = item.UsuarioId})">Eliminar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model.LstRegistro, p => Url.Action("_ListUsuarioMovil", new { p = p }), PaginationHelper.AjaxPagerOptionsDefault)
+
+
+

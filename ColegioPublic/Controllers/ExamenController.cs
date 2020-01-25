@@ -23,6 +23,7 @@ namespace ColegioPublic.Controllers
             return PartialView(model);
         }
 
+
         public ActionResult AddEditExamen(AddEditExamenViewModel model)
         {
             try

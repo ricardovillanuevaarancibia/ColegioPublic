@@ -1,0 +1,32 @@
+﻿@model ColegioPublic.ViewsModel.UsuarioMovilVM.IndexUsuarioMovilViewModel
+@{
+    ViewBag.Title = "Lista Usuario Movil";
+}
+
+<h2>Lista de Usuarios Movil</h2>
+
+@using (Ajax.BeginForm("_ListUsuarioMovil", "UsuarioMovil", new AjaxOptions
+{//GetPatients is name of method in PatientController
+    InsertionMode = InsertionMode.Replace, //target element(#patientList) will be replaced
+    UpdateTargetId = "paged-section",
+    LoadingElementId = "loader" // div with .gif loader - that is shown when data are loading
+}))
+{
+    @Html.LabelFor(x => x.q, new { })
+    <div class="input-group">
+
+        @Html.TextBoxFor(x => x.q, new { @class = "form-control" })
+        <button class="btn btn-success btn-sm"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </div>
+
+}
+<hr />
+<div class="button-group text-right">
+    <a href="@Url.Action("AddEditUsuarioMovil","UsuarioMovil")" class="btn btn-success"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Nuevo Usuario</a>
+</div>
+
+<div class="table-responsive" id="paged-section">
+    @{Html.RenderAction("_ListUsuarioMovil", Model);}
+</div>
+
+

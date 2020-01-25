@@ -24,6 +24,7 @@ namespace Data.Model
         public int GradoAcademicoCursoId { get; set; }
         public int CursoId { get; set; }
         public int GradoAcademicoId { get; set; }
+        public Nullable<int> ProfesorId { get; set; }
         public int EstadoId { get; set; }
         public string Silabos { get; set; }
     
@@ -31,6 +32,7 @@ namespace Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Examen> Examen { get; set; }
         public virtual GradoAcademico GradoAcademico { get; set; }
+        public virtual Profesor Profesor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Silabo> Silabo { get; set; }
     }

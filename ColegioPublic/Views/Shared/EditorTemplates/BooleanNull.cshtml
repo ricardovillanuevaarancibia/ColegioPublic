@@ -1,0 +1,9 @@
+﻿@model Boolean?
+
+<div class="form-group">
+    @Html.LabelFor(x => x, new { @class = "form-label col-sm-3" })
+    <div class="controls col-sm-9">
+        @Html.CheckBoxFor(x => x, new { @class = "checkbox" })
+        @Html.ValidationMessageFor(x => x)
+    </div>
+</div>

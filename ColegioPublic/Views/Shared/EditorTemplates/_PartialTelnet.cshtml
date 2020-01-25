@@ -1,0 +1,38 @@
+﻿@model Entel.SIOYM.Web.Areas.Inventory.ViewModels.Site._AddProductoAntenaGulViewModel
+
+<div class="sec2">
+    <div class="form-group row">
+        @Html.LabelRequiredFor(x => x.Sector2Id, new { @class = "col-3 col-form-label" })
+        <div class="col-9">
+            @Html.DropDownListFor(x => x.Sector2Id, new SelectList(Model.LstSector, "SectorId", "Nombre"), "[ - Seleccione - ]", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Sector2Id)
+        </div>
+    </div>
+
+
+    @Html.EditorFor(x => x.Azimuth2)
+
+
+    @Html.EditorFor(x => x.TiltMecanico2)
+
+
+    @Html.EditorFor(x => x.TiltElectrico2)
+</div>
+<div class="sec3">
+    <div class="form-group row">
+        @Html.LabelRequiredFor(x => x.Sector3Id, new { @class = "col-3 col-form-label" })
+        <div class="col-9">
+            @Html.DropDownListFor(x => x.Sector3Id, new SelectList(Model.LstSector, "SectorId", "Nombre"), "[ - Seleccione - ]", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Sector3Id)
+        </div>
+    </div>
+
+
+    @Html.EditorFor(x => x.Azimuth3)
+
+
+    @Html.EditorFor(x => x.TiltMecanico3)
+
+    @Html.EditorFor(x => x.TiltElectrico3)
+</div>
+

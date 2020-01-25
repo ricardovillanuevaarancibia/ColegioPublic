@@ -1,0 +1,18 @@
+﻿@model Entel.SIOYM.Web.Areas.Inventory.ViewModels.Site._MoudeloRectificadorViewModelAlmacen
+
+@{
+    var id = RandomHelper.GenerateRandomToken();
+}
+
+<tr id="@id">
+    @using (Html.BeginCollectionItem("LstModulos"))
+    {
+        <td>
+            @Html.TextBoxFor(x => x.NumeroSerie, new { @class = "form-control" })
+        </td>
+        <td>
+            <button onclick="$('#@id').remove();" type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i> </button>
+        </td>
+    }
+</tr>
+

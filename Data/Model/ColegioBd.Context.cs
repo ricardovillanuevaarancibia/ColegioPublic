@@ -37,7 +37,7 @@ namespace Data.Model
         public virtual DbSet<GradoAcademicoCurso> GradoAcademicoCurso { get; set; }
         public virtual DbSet<Horario> Horario { get; set; }
         public virtual DbSet<Matricula> Matricula { get; set; }
-        public virtual DbSet<MatriculaCursoAula> MatriculaCursoAula { get; set; }
+        public virtual DbSet<MatriculaAula> MatriculaAula { get; set; }
         public virtual DbSet<MatriculaCursoProfesor> MatriculaCursoProfesor { get; set; }
         public virtual DbSet<Nota> Nota { get; set; }
         public virtual DbSet<Notificacion> Notificacion { get; set; }

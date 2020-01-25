@@ -1,0 +1,23 @@
+﻿@model Entel.SIOYM.Web.Areas.Inventory.ViewModels.Site._ModuloContactoViewModel
+@{
+    var idContacto = Guid.NewGuid().ToString();
+    var prefix = ViewData.TemplateInfo.HtmlFieldPrefix == "" ? Model.Code : ViewData.TemplateInfo.HtmlFieldPrefix.Split('[')[1].Split(']')[0];
+}
+<tr id="@idContacto">
+    @using (Html.BeginCollectionItem("LstContrato[" + prefix + "].LstContacto"))
+    {
+        @Html.HiddenFor(x=>x.IdContacto)
+        <td>
+            @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control", required="required" })
+        </td>
+        <td>
+            @Html.TextBoxFor(x => x.Telefono, new { @class = "form-control onlyNumbers", required="required" })
+        </td>
+        <td>
+            @Html.TextBoxFor(x => x.CorreoElectronico, new { @class = "form-control", required="required" })
+        </td>
+        <td>
+            <button onclick="$('#@idContacto').remove();" type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i> </button>
+        </td>
+    }
+</tr>

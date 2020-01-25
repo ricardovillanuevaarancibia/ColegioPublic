@@ -21,6 +21,7 @@ namespace Data.Model
         public string NotaAlfabeto { get; set; }
         public int TipoNotaId { get; set; }
         public int EstadoId { get; set; }
+        public Nullable<int> UsuarioRegistroId { get; set; }
     
         public virtual Alumno Alumno { get; set; }
         public virtual Examen Examen { get; set; }

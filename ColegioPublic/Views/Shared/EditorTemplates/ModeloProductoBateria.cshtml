@@ -1,0 +1,18 @@
+﻿@model Entel.SIOYM.Web.Areas.Inventory.Models.ModeloProductoBateria
+
+@{
+    var id = Guid.NewGuid().ToString();
+    var modalId = ViewData["id"].ToString();
+}
+<tr>
+    @using (Html.BeginCollectionItem("LstBaterias"))
+    {
+        @Html.HiddenFor(x => Model.ProductoBateriaId)
+        @Html.HiddenFor(x => Model.ProductoId)
+        <td>@Model.Posicion</td>
+        <td class="capacidad-@modalId">@Model.Capacidad</td>
+        <td width="20%">@Html.TextBoxFor(x => Model.FechaInstalacion, new { @class = "form-control datetimepicker" })</td>
+        <td width="20%">@Html.TextBoxFor(x => Model.NumeroSerie, new { @class = "form-control " + Model.ColorError })</td>
+
+    }
+</tr>

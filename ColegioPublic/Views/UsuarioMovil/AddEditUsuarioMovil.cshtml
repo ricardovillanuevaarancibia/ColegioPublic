@@ -1,0 +1,81 @@
+﻿@model ColegioPublic.ViewsModel.UsuarioMovilVM.AddEditUsuarioMovilViewModel
+@{
+    ViewBag.Title = "Agregar UsuarioMovil";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">@(Model.UsuarioId.HasValue ? "Modificar " : "Editar ")Usuario</h4>
+                <form class="form" action="@Url.Action("AddEditUsuarioMovil","UsuarioMovil")" method="post">
+                    @Html.HiddenFor(x => x.UsuarioId)
+                    <div class="form-group mt-5 row">
+                        @Html.LabelFor(x => x.UserName, new { @class = "col-2 col-form-label" })
+
+                        <div class="col-10">
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group mt-5 row">
+                        @Html.LabelFor(x => x.Password, new { @class = "col-2 col-form-label" })
+
+                        <div class="col-10">
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group mt-5 row">
+                        @Html.LabelFor(x => x.Nombre, new { @class = "col-2 col-form-label" })
+
+                        <div class="col-10">
+                            @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group mt-5 row">
+                        @Html.LabelFor(x => x.ApellidoP, new { @class = "col-2 col-form-label" })
+
+                        <div class="col-10">
+                            @Html.TextBoxFor(x => x.ApellidoP, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group mt-5 row">
+                        @Html.LabelFor(x => x.ApellidoM, new { @class = "col-2 col-form-label" })
+
+                        <div class="col-10">
+                            @Html.TextBoxFor(x => x.ApellidoM, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group mt-5 row">
+                        @Html.LabelFor(x => x.Correo, new { @class = "col-2 col-form-label" })
+
+                        <div class="col-10">
+                            @Html.TextBoxFor(x => x.Correo, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group mt-5 row">
+                        @Html.LabelFor(x => x.Telefono, new { @class = "col-2 col-form-label" })
+
+                        <div class="col-10">
+                            @Html.TextBoxFor(x => x.Telefono, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                            <button type="button" class="btn btn-dark">Cancel</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(function () {
+
+        });
+    </script>
+}

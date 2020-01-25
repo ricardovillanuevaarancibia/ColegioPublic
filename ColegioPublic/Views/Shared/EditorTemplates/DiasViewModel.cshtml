@@ -1,0 +1,14 @@
+﻿@model Entel.SIOYM.Web.Areas.Ticket.ViewModels.TiempoActividad.DiasViewModel
+
+<td class="text-center">
+    @using (Html.BeginCollectionItem("LstDias"))
+    {
+        @Html.HiddenFor(x => Model.Codigo)
+        @Html.HiddenFor(x => Model.Nombre)
+        <div class="demo-checkbox">
+            @Html.CheckBoxFor(x => Model.Selected, new { @class = "js-switch" })
+            <p class="form-control-static text-center">@Model.Nombre</p>
+        </div>
+
+    }
+</td>

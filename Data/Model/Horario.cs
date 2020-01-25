@@ -31,13 +31,13 @@ namespace Data.Model
         public Nullable<System.DateTime> SabadoHoraFin { get; set; }
         public Nullable<System.DateTime> DomingoHoraInicio { get; set; }
         public Nullable<System.DateTime> DomingoHoraFIn { get; set; }
-        public bool Lunes { get; set; }
-        public bool Martes { get; set; }
-        public bool Miercoles { get; set; }
-        public bool Jueves { get; set; }
-        public bool Viernes { get; set; }
-        public bool Sabado { get; set; }
-        public bool Domingo { get; set; }
+        public Nullable<bool> Lunes { get; set; }
+        public Nullable<bool> Martes { get; set; }
+        public Nullable<bool> Miercoles { get; set; }
+        public Nullable<bool> Jueves { get; set; }
+        public Nullable<bool> Viernes { get; set; }
+        public Nullable<bool> Sabado { get; set; }
+        public Nullable<bool> Domingo { get; set; }
         public int EstadoId { get; set; }
     
         public virtual Curso Curso { get; set; }

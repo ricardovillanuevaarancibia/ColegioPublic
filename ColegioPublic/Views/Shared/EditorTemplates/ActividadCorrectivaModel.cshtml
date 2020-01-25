@@ -1,0 +1,6 @@
+﻿@model Entel.SIOYM.Web.Areas.Ticket.Models.ActividadCorrectivaModel
+
+@using (Html.BeginCollectionItem("LstActividadesCorrectivasSeleccionadas"))
+{
+    @Html.HiddenFor(x => Model.ActividadId)
+}

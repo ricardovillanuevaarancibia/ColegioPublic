@@ -19,7 +19,6 @@ namespace Data.Model
         {
             this.Horario = new HashSet<Horario>();
             this.GradoAcademicoCurso = new HashSet<GradoAcademicoCurso>();
-            this.MatriculaCursoAula = new HashSet<MatriculaCursoAula>();
             this.MatriculaCursoProfesor = new HashSet<MatriculaCursoProfesor>();
         }
     
@@ -32,8 +31,6 @@ namespace Data.Model
         public virtual ICollection<Horario> Horario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GradoAcademicoCurso> GradoAcademicoCurso { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MatriculaCursoAula> MatriculaCursoAula { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatriculaCursoProfesor> MatriculaCursoProfesor { get; set; }
     }

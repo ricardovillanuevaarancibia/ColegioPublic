@@ -1,0 +1,28 @@
+﻿@model Entel.SIOYM.Web.Areas.Inventory.ViewModels.Site._ModuloRectificadorViewModel
+
+@{
+    var id = RandomHelper.GenerateRandomToken();
+}
+@if (Model.LstModelos !=null)
+{
+<tr id="@id">
+    @using (Html.BeginCollectionItem("LstModulos"))
+    {
+        <td>
+            @Html.HiddenFor(x => x.ProductoId)
+            @Html.DropDownListFor(x => x.ModeloId, new SelectList(Model.LstModelos, "ModeloId", "Nombre"), "[ - Seleccione - ]", new { @class = "form-control select2 modelo", @data_id = id, @data_url = Url.Action("GetCapacityByModel", "Site", new { area = "Inventory" }) })
+        </td>
+        <td>
+            @Html.TextBoxFor(x => x.Capacidad, new { @class = "form-control", @readonly = "readonly", @id = "Capacidad-" + id, @data_capacidad = "" })
+        </td>
+        <td>
+            @Html.TextBoxFor(x => x.NumeroSerie, new { @class = "form-control" })
+        </td>
+        <td>
+            <button onclick="$('#@id').remove();" type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i> </button>
+        </td>
+    }
+</tr>
+}
+
+

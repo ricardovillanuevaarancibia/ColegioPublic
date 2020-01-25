@@ -1,0 +1,105 @@
+﻿@model Entel.SIOYM.Web.Areas.Inventory.ViewModels.Site._ModuloContratoViewModel
+@{
+    var idContrato = Guid.NewGuid().ToString();
+    var prefixContrato = ViewData.TemplateInfo.HtmlFieldPrefix;
+}
+
+<div class="row">
+   
+    <div class="col-lg-12 form-group" id="@idContrato" data-code="@idContrato">
+        <div class="card card-outline-info">
+            <a href="#" class="card-header" id="heading-@idContrato" data-toggle="collapse" data-target="#collapse-@idContrato" aria-expanded="true" aria-controls="collapse-@idContrato">
+                <div class="row">
+                    <div class="col-lg-11">
+                        <h4 class="m-b-0 text-white">Contrato</h4>
+                    </div>
+                    <div class="col-lg-1" style="text-align: right">
+                        <i onclick="$('#@idContrato').remove();" class="fa fa-trash" style="color:white;"></i>
+                    </div>
+                </div>
+            </a>
+            <div id="collapse-@idContrato" class="collapse show" aria-labelledby="heading-@idContrato" data-parent="#accordian-@idContrato">
+                <div class="card-body">
+                    <div class="row">
+                        @using (Html.BeginCollectionItem("LstContrato"))
+                        {
+                            @Html.HiddenFor(x => x.IdContrato)
+                            <div class="col-lg-12">
+                                <div class="form-group row">
+                                    <label class="col-3 col-form-label">ID Contrato</label>
+                                    <div class="col-9">
+                                        @Html.TextBoxFor(x => x.Codigo, new { @class = "form-control", required = "required" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group row">
+                                        <label class="col-3 col-form-label">Fecha Inicio</label>
+                                        <div class="col-9">
+                                            @Html.TextBoxFor(x => x.FechaInicio, new { @class = "form-control datetimepicker FechaInicio", required="required", onchange = "validarFechaInicio(this)" })
+                                        </div>
+                                    </div>
+                                @*@Html.EditorFor(x => x.FechaInicio, new { required = "required" })*@
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group row">
+                                    <label class="col-3 col-form-label">Fecha Fin</label>
+                                    <div class="col-9">
+                                        @Html.TextBoxFor(x => x.FechaFin, new { @class = "form-control datetimepicker FechaFin", required="required", onchange = "validarFechaFin(this)" })
+                                    </div>
+                                </div>
+
+                                @*Html.EditorFor(x => x.FechaFin, new { @class = "datetimepicker " })*@
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group row">
+                                    <label class="col-3 col-form-label">Arrendador</label>
+                                    <div class="col-9">
+                                        @Html.TextBoxFor(x => x.Arrendador, new { @class = "form-control", required = "required" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group row">
+                                    <label class="col-3 col-form-label">Area Arrendada (m2)</label>
+                                    <div class="col-9">
+                                        @Html.TextBoxFor(x => x.AreaArrendada, new { @class = "form-control", required = "required", min="0.00" })
+                                        @Html.ValidationMessageFor(x=>x.AreaArrendada)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 form-group">
+                                <a onclick="generateModuloContacto('#tblbodycontr-@idContrato','@Url.Action("AddModuloContacto")', 'btn-@idContrato')" id="btn-@idContrato" class="btn btn-secondary float-right" data-cont="data-cont-0"> <i class="fas fa-plus m-r-10"></i> Agregar Contacto</a>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table table-striped table-condensed table-hover" data-table-contacto>
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Teléfono</th>
+                                            <th>Correo</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblbodycontr-@idContrato">
+                                        @if (Model.LstContacto != null)
+                                        {
+                                            for (int i = 0; i < Model.LstContacto.Count; i++)
+                                            {
+                                                @Html.EditorFor(x => x.LstContacto[i])
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

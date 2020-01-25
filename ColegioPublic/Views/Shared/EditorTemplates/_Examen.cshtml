@@ -1,0 +1,24 @@
+﻿
+@model ColegioPublic.ViewsModel.ExamenVM.Examenes
+
+@{ var UniqueId = Guid.NewGuid().ToString();}
+@using (Html.BeginCollectionItem("LstExamenes"))
+{
+    <div id="@UniqueId">
+
+        @Html.DropDownListFor(x => x.TipoExamenId, new SelectList(Model.LstTipoExamen, "Value", "Text"), new { @class = "custom-select" })
+
+        @Html.EditorFor(x => x.FechaExamen, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+
+
+        <input type="button" id="Delete" name="Delete" value="Delete" onclick="javascript: deleteExamen(document.getElementById('@UniqueId'))" />
+
+
+    </div>
+
+}
+
+
+
+
+

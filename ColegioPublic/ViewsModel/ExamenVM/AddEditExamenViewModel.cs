@@ -57,6 +57,7 @@ namespace ColegioPublic.ViewsModel.ExamenVM
         public DateTime? FechaExamen { get; set; }
         public List<SelectListItem> LstTipoExamen { get; set; }
         public int ?TipoExamenId { get; set; }
+        public string NombreTipoExamen { get; set; }
         public int? EstadoId { get; set; }
 
         public void Fill(CargarDatosContext context)

@@ -17,6 +17,7 @@ namespace Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Profesor()
         {
+            this.GradoAcademicoCurso = new HashSet<GradoAcademicoCurso>();
             this.MatriculaCursoProfesor = new HashSet<MatriculaCursoProfesor>();
         }
     
@@ -28,6 +29,8 @@ namespace Data.Model
         public Nullable<int> EstadoId { get; set; }
         public string RutaFoto { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GradoAcademicoCurso> GradoAcademicoCurso { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatriculaCursoProfesor> MatriculaCursoProfesor { get; set; }
     }

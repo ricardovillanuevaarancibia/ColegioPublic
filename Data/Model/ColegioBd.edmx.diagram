@@ -5,30 +5,30 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bd2e6e61973c4b07bc185b8de829ca9f" Name="Diagram1">
-        <EntityTypeShape EntityType="ColegioBdModel.Actividades" Width="1.5" PointX="7.75" PointY="2.625" />
-        <EntityTypeShape EntityType="ColegioBdModel.Alumno" Width="1.5" PointX="6" PointY="10.25" />
-        <EntityTypeShape EntityType="ColegioBdModel.AlumnoAula" Width="1.5" PointX="8.25" PointY="11" />
-        <EntityTypeShape EntityType="ColegioBdModel.Asistencia" Width="1.5" PointX="8.25" PointY="14" />
-        <EntityTypeShape EntityType="ColegioBdModel.Aula" Width="1.5" PointX="6" PointY="15" />
-        <EntityTypeShape EntityType="ColegioBdModel.Curso" Width="1.5" PointX="1.5" PointY="15.375" />
-        <EntityTypeShape EntityType="ColegioBdModel.Estado" Width="1.5" PointX="9.75" PointY="2.625" />
-        <EntityTypeShape EntityType="ColegioBdModel.Examen" Width="1.5" PointX="3" PointY="6.875" />
-        <EntityTypeShape EntityType="ColegioBdModel.GradoAcademico" Width="1.5" PointX="1.5" PointY="18.75" />
-        <EntityTypeShape EntityType="ColegioBdModel.GradoAcademicoCurso" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ColegioBdModel.Horario" Width="1.5" PointX="3.75" PointY="15.125" />
-        <EntityTypeShape EntityType="ColegioBdModel.Matricula" Width="1.5" PointX="8.25" PointY="17.125" />
-        <EntityTypeShape EntityType="ColegioBdModel.MatriculaCursoAula" Width="1.5" PointX="10.5" PointY="16.5" />
-        <EntityTypeShape EntityType="ColegioBdModel.MatriculaCursoProfesor" Width="1.5" PointX="13.5" PointY="16.5" />
-        <EntityTypeShape EntityType="ColegioBdModel.Nota" Width="1.5" PointX="8.25" PointY="6.625" />
-        <EntityTypeShape EntityType="ColegioBdModel.Notificacion" Width="1.5" PointX="3" PointY="2.625" />
-        <EntityTypeShape EntityType="ColegioBdModel.NotificacionRespuesta" Width="1.5" PointX="5.25" PointY="3.125" />
-        <EntityTypeShape EntityType="ColegioBdModel.Permiso" Width="1.5" PointX="6" PointY="6.875" />
-        <EntityTypeShape EntityType="ColegioBdModel.Profesor" Width="1.5" PointX="11.25" PointY="20.5" />
-        <EntityTypeShape EntityType="ColegioBdModel.Silabo" Width="1.5" PointX="3" PointY="10.625" />
-        <EntityTypeShape EntityType="ColegioBdModel.TipoGenerico" Width="1.5" PointX="0.75" PointY="6.5" />
-        <EntityTypeShape EntityType="ColegioBdModel.User" Width="1.5" PointX="10.75" PointY="5.625" />
-        <EntityTypeShape EntityType="ColegioBdModel.Usuario" Width="1.5" PointX="0.75" PointY="11" />
-        <EntityTypeShape EntityType="ColegioBdModel.UsuarioAlumno" Width="1.5" PointX="11.25" PointY="11.25" />
+        <EntityTypeShape EntityType="ColegioBdModel.Actividades" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ColegioBdModel.Alumno" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="ColegioBdModel.AlumnoAula" Width="1.5" PointX="6" PointY="12.625" />
+        <EntityTypeShape EntityType="ColegioBdModel.Asistencia" Width="1.5" PointX="3" PointY="16.75" />
+        <EntityTypeShape EntityType="ColegioBdModel.Aula" Width="1.5" PointX="3.75" PointY="19.625" />
+        <EntityTypeShape EntityType="ColegioBdModel.Curso" Width="1.5" PointX="1.5" PointY="13.375" />
+        <EntityTypeShape EntityType="ColegioBdModel.Estado" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ColegioBdModel.Examen" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="ColegioBdModel.GradoAcademico" Width="1.5" PointX="1.5" PointY="21" />
+        <EntityTypeShape EntityType="ColegioBdModel.GradoAcademicoCurso" Width="1.5" PointX="0.75" PointY="16.875" />
+        <EntityTypeShape EntityType="ColegioBdModel.Horario" Width="1.5" PointX="10.75" PointY="15.25" />
+        <EntityTypeShape EntityType="ColegioBdModel.Matricula" Width="1.5" PointX="5.75" PointY="15.5" />
+        <EntityTypeShape EntityType="ColegioBdModel.MatriculaAula" Width="1.5" PointX="8" PointY="15.875" />
+        <EntityTypeShape EntityType="ColegioBdModel.MatriculaCursoProfesor" Width="1.5" PointX="8" PointY="19.75" />
+        <EntityTypeShape EntityType="ColegioBdModel.Nota" Width="1.5" PointX="5.25" PointY="0.875" />
+        <EntityTypeShape EntityType="ColegioBdModel.Notificacion" Width="1.5" PointX="6" PointY="4.875" />
+        <EntityTypeShape EntityType="ColegioBdModel.NotificacionRespuesta" Width="1.5" PointX="8.25" PointY="5.375" />
+        <EntityTypeShape EntityType="ColegioBdModel.Permiso" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="ColegioBdModel.Profesor" Width="1.5" PointX="1.5" PointY="23.875" />
+        <EntityTypeShape EntityType="ColegioBdModel.Silabo" Width="1.5" PointX="3" PointY="27.5" />
+        <EntityTypeShape EntityType="ColegioBdModel.TipoGenerico" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="ColegioBdModel.User" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ColegioBdModel.Usuario" Width="1.5" PointX="3.75" PointY="8.875" />
+        <EntityTypeShape EntityType="ColegioBdModel.UsuarioAlumno" Width="1.5" PointX="6" PointY="9.75" />
         <AssociationConnector Association="ColegioBdModel.FK_AlumnoAula_Alumno" />
         <AssociationConnector Association="ColegioBdModel.FK_Asistencia_Alumno" />
         <AssociationConnector Association="ColegioBdModel.FK_Matricula" />
@@ -39,7 +39,6 @@
         <AssociationConnector Association="ColegioBdModel.FK_MatriculaCursoAula_Aula" />
         <AssociationConnector Association="ColegioBdModel.FK_Horario_Curso" />
         <AssociationConnector Association="ColegioBdModel.FK_MatriculaCurso_Curso" />
-        <AssociationConnector Association="ColegioBdModel.FK_MatriculaCursoAula_Curso" />
         <AssociationConnector Association="ColegioBdModel.FK_MatriculaCursoProfesor_Curso" />
         <AssociationConnector Association="ColegioBdModel.FK_Examen_GradoAcademicoCursoId" />
         <AssociationConnector Association="ColegioBdModel.FK_Examen_TipoExamen" />
@@ -47,6 +46,7 @@
         <AssociationConnector Association="ColegioBdModel.FK_Horario_GradoAcademico" />
         <AssociationConnector Association="ColegioBdModel.FK_Matricula_GradoAcademico" />
         <AssociationConnector Association="ColegioBdModel.FK_MatriculaCurso_GradoAcademico" />
+        <AssociationConnector Association="ColegioBdModel.FK_GradoAcademicoCurso_Profesor" />
         <AssociationConnector Association="ColegioBdModel.FK_Silabo_CursoGradoAcademico" />
         <AssociationConnector Association="ColegioBdModel.FK_MatriculaCursoAula_Matricula" />
         <AssociationConnector Association="ColegioBdModel.FK_MatriculaCursoProfesor_Matricula" />

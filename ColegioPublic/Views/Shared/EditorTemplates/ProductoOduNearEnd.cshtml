@@ -1,0 +1,26 @@
+﻿@model Entel.SIOYM.Web.Areas.Inventory.Models.ProductoOduEntity
+
+<tr>
+    @using (Html.BeginCollectionItem("LstProductoOduNearEnd"))
+    {
+        <td>
+            <a href="#" class="text-danger" data-delete-item="tr"><i class="fa fa-times"></i></a>
+            @Html.HiddenFor(m => m.ProductoId)
+            @Html.HiddenFor(m => m.ProductoIduId)
+            @Html.HiddenFor(m => m.ProductoOduId)
+        </td>
+        <td>
+            @Html.DropDownListFor(x => x.MarcaId, new SelectList(Model.LstMarca, "Value", "Text"), "[ - Seleccione - ]", new { @class = "form-control form-control-sm", @data_target = "ModeloId", @data_dropdown_select = string.Empty, @data_tipo_producto = $"{ConstantHelpers.TIPO_GENERICO.TIPO_PRODUCTO_ODU}", @data_url = Url.Action("GetLstModeloByMarca", "Json", new { Area = string.Empty }) })
+            @Html.ValidationMessageFor(x => x.MarcaId)
+        </td>
+        <td colspan="2">
+            @Html.DropDownListFor(m => m.ModeloId, new SelectList(Model.LstModelo, "Value", "Text"), "[ - Modelo - ]", new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.ModeloId)
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.NumeroSerie, new { @class = "form-control form-control-sm num-serODU " + Model.ColorError, placeholder = "Numero de serie" })
+            @Html.ValidationMessageFor(x => x.NumeroSerie)
+        </td>
+    }
+</tr>
+

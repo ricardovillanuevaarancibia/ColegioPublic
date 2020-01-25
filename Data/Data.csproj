@@ -101,7 +101,7 @@
     <Compile Include="Model\Matricula.cs">
       <DependentUpon>ColegioBd.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\MatriculaCursoAula.cs">
+    <Compile Include="Model\MatriculaAula.cs">
       <DependentUpon>ColegioBd.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\MatriculaCursoProfesor.cs">

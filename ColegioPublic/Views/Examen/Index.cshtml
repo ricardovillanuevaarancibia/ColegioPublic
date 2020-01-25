@@ -26,13 +26,38 @@
                     </div>
                     @Html.ValidationMessageFor(x => x.CursoId)
                 </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(x => x.TipoExamenId, new { @class = "col-sm-2 col-form-label" })
+
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(x => x.TipoExamenId, new SelectList(Model.LstTipoExamen, "Value", "Text"), new { @class = "custom-select" })
+
+                    </div>
+                    @Html.ValidationMessageFor(x => x.TipoExamenId)
+                </div>
+                <div class="form-group row">
+
+                    @Html.LabelFor(x => x.FechaExamen, new { @class = "col-2 col-form-label" })
+
+                    <div class="col-4">
+
+                        @Html.TextBoxFor(x => x.FechaExamen, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div><button class="btn btn-success">Agregar</button></div>
+                </div>
+            </div>
+         
+             
+          
+
+            <div id="renderParcial" class="table-responsive">
+              
             </div>
 
-            <div id="renderParcial" class="text-center">
-
-            </div>
-
-        </div>
+     </div>
     </div>
 </div>
 
@@ -59,7 +84,7 @@
             $.ajax({
                 type: "POST",
                 data: formData,
-                url: '@Url.Action("getCursoByGrado", "Horario")',
+                url: '@Url.Action("getCursoByGrado", "Examen")',
                processData: false,
                contentType: false
             }).done(function (data) {
@@ -80,14 +105,14 @@
        function loadPartial() {
              debugger;
                 var formData = new FormData();
-                    var gradoId = $("#GradoAcademicoId").val();
+                  
                   var cursoId = $("#CursoId").val();
-                formData.append("cursoId", cursoId);
-                 formData.append("gradoId", gradoId);
+                formData.append("gradoCursoId", cursoId);
+           
             $.ajax({
                 type: "POST",
                 data: formData,
-                url: '@Url.Action("Horario", "Horario")',
+                url: '@Url.Action("Examen", "Examen")',
                processData: false,
                contentType: false
             }).done(function (data) {
@@ -101,21 +126,37 @@
             function SetUpPickers(){
 
               $(".datetimepicker1").datetimepicker({
-                //format: 'DD-MM-YYYY',
-                 format: 'LT'
+                format: 'DD-MM-YYYY',
+                
 
             });
         }
-     $('#addExamen').on('click', function () {
-                $.ajax({
-                    async: false,
-                    url: '@Url.Action("","")'
-                }).success(function (partialView) {
-                    $('#new-Examen').append(partialView);
-                });
-            });
-   
-     });
+        $('#renderParcial').on('click','#addExamen', function () {
+            var tipoExamenNombre = "";
+            var tipoExamenId = "";
+            var fecha = "";
+            $('#new-Examen').append(
+                `<tr>
+                <td class="hide">${tipoExamenId}</td>
+                <td>${tipoExamenNombre}</td>
+                <td>${fecha}</td>
+                <td> <a href="#" class="delete">Eliminar</a></td>
+                </tr>`);  
+
+        });
+
+      
+        $('.delete').off().click(function(e) {
+            $(this).parent('td').parent('tr').remove();
+       
+         });
+            
+
+       function deleteExamen(examenDiv) {
+            examenDiv.remove();
+        }
+
+         });
 
     </script>
 

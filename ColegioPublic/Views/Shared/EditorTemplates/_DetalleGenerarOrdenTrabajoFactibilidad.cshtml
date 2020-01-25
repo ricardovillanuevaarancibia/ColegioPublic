@@ -1,0 +1,31 @@
+﻿@model Entel.SIOYM.Web.Areas.Provired.ViewModels.FeasibleworkOrders._DetalleGenerarOrdenTrabajoFactibilidad
+
+@{
+    var id = Guid.NewGuid();
+    var Estado = String.Empty;
+}
+    <tr>
+        @using (Html.BeginCollectionItem("LstOrdenes"))
+        {
+            @Html.HiddenFor(x => Model.OrdenTrabajoId)
+            @Html.HiddenFor(x => Model.UsusarioId)
+            @Html.HiddenFor(x => Model.TipoOTId)
+            @Html.HiddenFor(x => Model.Comentario)
+            var codigo = string.IsNullOrEmpty(Model.CodigoOT) ? "Aun no asigando" : Model.CodigoOT;
+            switch (Model.Estado)
+            {
+                case "Pendiente"://evaluando
+                    Estado = "<span class='badge badge-orange' style='color:#FFFFFF'>" + Model.Estado + "</span>";
+                    break;
+                case "Ejecutada"://evaluado
+                    Estado = "<span class='badge badge-cyan' style='color:#FFFFFF'>" + Model.Estado + "</span>";
+                    break;
+            }
+
+            <td>@codigo</td>
+            <td>@Model.NombreUsuario</td>
+            <td>@Model.TipoOT</td>
+            <td>@Html.Raw(Estado)</td>
+            <td>@Model.Comentario</td>
+        }
+    </tr>

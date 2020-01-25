@@ -97,6 +97,7 @@
           <Property Name="GradoAcademicoCursoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CursoId" Type="int" Nullable="false" />
           <Property Name="GradoAcademicoId" Type="int" Nullable="false" />
+          <Property Name="ProfesorId" Type="int" />
           <Property Name="EstadoId" Type="int" Nullable="false" />
           <Property Name="Silabos" Type="varchar" MaxLength="1000" />
         </EntityType>
@@ -121,13 +122,13 @@
           <Property Name="SabadoHoraFin" Type="datetime" />
           <Property Name="DomingoHoraInicio" Type="datetime" />
           <Property Name="DomingoHoraFIn" Type="datetime" />
-          <Property Name="Lunes" Type="bit" Nullable="false" />
-          <Property Name="Martes" Type="bit" Nullable="false" />
-          <Property Name="Miercoles" Type="bit" Nullable="false" />
-          <Property Name="Jueves" Type="bit" Nullable="false" />
-          <Property Name="Viernes" Type="bit" Nullable="false" />
-          <Property Name="Sabado" Type="bit" Nullable="false" />
-          <Property Name="Domingo" Type="bit" Nullable="false" />
+          <Property Name="Lunes" Type="bit" />
+          <Property Name="Martes" Type="bit" />
+          <Property Name="Miercoles" Type="bit" />
+          <Property Name="Jueves" Type="bit" />
+          <Property Name="Viernes" Type="bit" />
+          <Property Name="Sabado" Type="bit" />
+          <Property Name="Domingo" Type="bit" />
           <Property Name="EstadoId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Matricula">
@@ -141,7 +142,7 @@
           <Property Name="FechaCreacion" Type="datetime" />
           <Property Name="EstadoId" Type="int" />
         </EntityType>
-        <EntityType Name="MatriculaCursoAula">
+        <EntityType Name="MatriculaAula">
           <Key>
             <PropertyRef Name="MatriculaCursoAulaId" />
           </Key>
@@ -172,6 +173,7 @@
           <Property Name="NotaAlfabeto" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TipoNotaId" Type="int" Nullable="false" />
           <Property Name="EstadoId" Type="int" Nullable="false" />
+          <Property Name="UsuarioRegistroId" Type="int" />
         </EntityType>
         <EntityType Name="Notificacion">
           <Key>
@@ -242,6 +244,8 @@
           <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Rol" Type="varchar" MaxLength="50" />
+          <Property Name="EstadoId" Type="int" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -325,6 +329,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GradoAcademicoCurso_Profesor">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="0..1" />
+          <End Role="GradoAcademicoCurso" Type="Self.GradoAcademicoCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="ProfesorId" />
+            </Principal>
+            <Dependent Role="GradoAcademicoCurso">
+              <PropertyRef Name="ProfesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Horario_Curso">
           <End Role="Curso" Type="Self.Curso" Multiplicity="0..1" />
           <End Role="Horario" Type="Self.Horario" Multiplicity="*" />
@@ -399,36 +415,24 @@
         </Association>
         <Association Name="FK_MatriculaCursoAula_Aula">
           <End Role="Aula" Type="Self.Aula" Multiplicity="0..1" />
-          <End Role="MatriculaCursoAula" Type="Self.MatriculaCursoAula" Multiplicity="*" />
+          <End Role="MatriculaAula" Type="Self.MatriculaAula" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Aula">
               <PropertyRef Name="AulaId" />
             </Principal>
-            <Dependent Role="MatriculaCursoAula">
+            <Dependent Role="MatriculaAula">
               <PropertyRef Name="AulaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MatriculaCursoAula_Curso">
-          <End Role="Curso" Type="Self.Curso" Multiplicity="0..1" />
-          <End Role="MatriculaCursoAula" Type="Self.MatriculaCursoAula" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Curso">
-              <PropertyRef Name="CursoId" />
-            </Principal>
-            <Dependent Role="MatriculaCursoAula">
-              <PropertyRef Name="CursoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MatriculaCursoAula_Matricula">
           <End Role="Matricula" Type="Self.Matricula" Multiplicity="0..1" />
-          <End Role="MatriculaCursoAula" Type="Self.MatriculaCursoAula" Multiplicity="*" />
+          <End Role="MatriculaAula" Type="Self.MatriculaAula" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Matricula">
               <PropertyRef Name="MatriculaId" />
             </Principal>
-            <Dependent Role="MatriculaCursoAula">
+            <Dependent Role="MatriculaAula">
               <PropertyRef Name="MatriculaId" />
             </Dependent>
           </ReferentialConstraint>
@@ -626,7 +630,7 @@
           <EntitySet Name="GradoAcademicoCurso" EntityType="Self.GradoAcademicoCurso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Matricula" EntityType="Self.Matricula" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MatriculaCursoAula" EntityType="Self.MatriculaCursoAula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MatriculaAula" EntityType="Self.MatriculaAula" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MatriculaCursoProfesor" EntityType="Self.MatriculaCursoProfesor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nota" EntityType="Self.Nota" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notificacion" EntityType="Self.Notificacion" Schema="dbo" store:Type="Tables" />
@@ -658,6 +662,10 @@
             <End Role="TipoGenerico" EntitySet="TipoGenerico" />
             <End Role="Examen" EntitySet="Examen" />
           </AssociationSet>
+          <AssociationSet Name="FK_GradoAcademicoCurso_Profesor" Association="Self.FK_GradoAcademicoCurso_Profesor">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="GradoAcademicoCurso" EntitySet="GradoAcademicoCurso" />
+          </AssociationSet>
           <AssociationSet Name="FK_Horario_Curso" Association="Self.FK_Horario_Curso">
             <End Role="Curso" EntitySet="Curso" />
             <End Role="Horario" EntitySet="Horario" />
@@ -684,15 +692,11 @@
           </AssociationSet>
           <AssociationSet Name="FK_MatriculaCursoAula_Aula" Association="Self.FK_MatriculaCursoAula_Aula">
             <End Role="Aula" EntitySet="Aula" />
-            <End Role="MatriculaCursoAula" EntitySet="MatriculaCursoAula" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MatriculaCursoAula_Curso" Association="Self.FK_MatriculaCursoAula_Curso">
-            <End Role="Curso" EntitySet="Curso" />
-            <End Role="MatriculaCursoAula" EntitySet="MatriculaCursoAula" />
+            <End Role="MatriculaAula" EntitySet="MatriculaAula" />
           </AssociationSet>
           <AssociationSet Name="FK_MatriculaCursoAula_Matricula" Association="Self.FK_MatriculaCursoAula_Matricula">
             <End Role="Matricula" EntitySet="Matricula" />
-            <End Role="MatriculaCursoAula" EntitySet="MatriculaCursoAula" />
+            <End Role="MatriculaAula" EntitySet="MatriculaAula" />
           </AssociationSet>
           <AssociationSet Name="FK_MatriculaCursoProfesor_Curso" Association="Self.FK_MatriculaCursoProfesor_Curso">
             <End Role="Curso" EntitySet="Curso" />
@@ -772,7 +776,7 @@
           <EntitySet Name="GradoAcademicoCurso" EntityType="ColegioBdModel.GradoAcademicoCurso" />
           <EntitySet Name="Horario" EntityType="ColegioBdModel.Horario" />
           <EntitySet Name="Matricula" EntityType="ColegioBdModel.Matricula" />
-          <EntitySet Name="MatriculaCursoAula" EntityType="ColegioBdModel.MatriculaCursoAula" />
+          <EntitySet Name="MatriculaAula" EntityType="ColegioBdModel.MatriculaAula" />
           <EntitySet Name="MatriculaCursoProfesor" EntityType="ColegioBdModel.MatriculaCursoProfesor" />
           <EntitySet Name="Nota" EntityType="ColegioBdModel.Nota" />
           <EntitySet Name="Notificacion" EntityType="ColegioBdModel.Notificacion" />
@@ -814,7 +818,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_MatriculaCursoAula_Aula" Association="ColegioBdModel.FK_MatriculaCursoAula_Aula">
             <End Role="Aula" EntitySet="Aula" />
-            <End Role="MatriculaCursoAula" EntitySet="MatriculaCursoAula" />
+            <End Role="MatriculaAula" EntitySet="MatriculaAula" />
           </AssociationSet>
           <AssociationSet Name="FK_Horario_Curso" Association="ColegioBdModel.FK_Horario_Curso">
             <End Role="Curso" EntitySet="Curso" />
@@ -823,10 +827,6 @@
           <AssociationSet Name="FK_MatriculaCurso_Curso" Association="ColegioBdModel.FK_MatriculaCurso_Curso">
             <End Role="Curso" EntitySet="Curso" />
             <End Role="GradoAcademicoCurso" EntitySet="GradoAcademicoCurso" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MatriculaCursoAula_Curso" Association="ColegioBdModel.FK_MatriculaCursoAula_Curso">
-            <End Role="Curso" EntitySet="Curso" />
-            <End Role="MatriculaCursoAula" EntitySet="MatriculaCursoAula" />
           </AssociationSet>
           <AssociationSet Name="FK_MatriculaCursoProfesor_Curso" Association="ColegioBdModel.FK_MatriculaCursoProfesor_Curso">
             <End Role="Curso" EntitySet="Curso" />
@@ -856,13 +856,17 @@
             <End Role="GradoAcademico" EntitySet="GradoAcademico" />
             <End Role="GradoAcademicoCurso" EntitySet="GradoAcademicoCurso" />
           </AssociationSet>
+          <AssociationSet Name="FK_GradoAcademicoCurso_Profesor" Association="ColegioBdModel.FK_GradoAcademicoCurso_Profesor">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="GradoAcademicoCurso" EntitySet="GradoAcademicoCurso" />
+          </AssociationSet>
           <AssociationSet Name="FK_Silabo_CursoGradoAcademico" Association="ColegioBdModel.FK_Silabo_CursoGradoAcademico">
             <End Role="GradoAcademicoCurso" EntitySet="GradoAcademicoCurso" />
             <End Role="Silabo" EntitySet="Silabo" />
           </AssociationSet>
           <AssociationSet Name="FK_MatriculaCursoAula_Matricula" Association="ColegioBdModel.FK_MatriculaCursoAula_Matricula">
             <End Role="Matricula" EntitySet="Matricula" />
-            <End Role="MatriculaCursoAula" EntitySet="MatriculaCursoAula" />
+            <End Role="MatriculaAula" EntitySet="MatriculaAula" />
           </AssociationSet>
           <AssociationSet Name="FK_MatriculaCursoProfesor_Matricula" Association="ColegioBdModel.FK_MatriculaCursoProfesor_Matricula">
             <End Role="Matricula" EntitySet="Matricula" />
@@ -961,7 +965,7 @@
           <Property Name="CapacidadMax" Type="Int32" />
           <Property Name="EstadoId" Type="Int32" />
           <NavigationProperty Name="AlumnoAula" Relationship="ColegioBdModel.FK_AlumnoAula_Aula" FromRole="Aula" ToRole="AlumnoAula" />
-          <NavigationProperty Name="MatriculaCursoAula" Relationship="ColegioBdModel.FK_MatriculaCursoAula_Aula" FromRole="Aula" ToRole="MatriculaCursoAula" />
+          <NavigationProperty Name="MatriculaAula" Relationship="ColegioBdModel.FK_MatriculaCursoAula_Aula" FromRole="Aula" ToRole="MatriculaAula" />
         </EntityType>
         <EntityType Name="Curso">
           <Key>
@@ -973,7 +977,6 @@
           <Property Name="EstadoId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Horario" Relationship="ColegioBdModel.FK_Horario_Curso" FromRole="Curso" ToRole="Horario" />
           <NavigationProperty Name="GradoAcademicoCurso" Relationship="ColegioBdModel.FK_MatriculaCurso_Curso" FromRole="Curso" ToRole="GradoAcademicoCurso" />
-          <NavigationProperty Name="MatriculaCursoAula" Relationship="ColegioBdModel.FK_MatriculaCursoAula_Curso" FromRole="Curso" ToRole="MatriculaCursoAula" />
           <NavigationProperty Name="MatriculaCursoProfesor" Relationship="ColegioBdModel.FK_MatriculaCursoProfesor_Curso" FromRole="Curso" ToRole="MatriculaCursoProfesor" />
         </EntityType>
         <EntityType Name="Estado">
@@ -1014,11 +1017,13 @@
           <Property Name="GradoAcademicoCursoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CursoId" Type="Int32" Nullable="false" />
           <Property Name="GradoAcademicoId" Type="Int32" Nullable="false" />
+          <Property Name="ProfesorId" Type="Int32" />
           <Property Name="EstadoId" Type="Int32" Nullable="false" />
           <Property Name="Silabos" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Curso" Relationship="ColegioBdModel.FK_MatriculaCurso_Curso" FromRole="GradoAcademicoCurso" ToRole="Curso" />
           <NavigationProperty Name="Examen" Relationship="ColegioBdModel.FK_Examen_GradoAcademicoCursoId" FromRole="GradoAcademicoCurso" ToRole="Examen" />
           <NavigationProperty Name="GradoAcademico" Relationship="ColegioBdModel.FK_MatriculaCurso_GradoAcademico" FromRole="GradoAcademicoCurso" ToRole="GradoAcademico" />
+          <NavigationProperty Name="Profesor" Relationship="ColegioBdModel.FK_GradoAcademicoCurso_Profesor" FromRole="GradoAcademicoCurso" ToRole="Profesor" />
           <NavigationProperty Name="Silabo" Relationship="ColegioBdModel.FK_Silabo_CursoGradoAcademico" FromRole="GradoAcademicoCurso" ToRole="Silabo" />
         </EntityType>
         <EntityType Name="Horario">
@@ -1042,13 +1047,13 @@
           <Property Name="SabadoHoraFin" Type="DateTime" Precision="3" />
           <Property Name="DomingoHoraInicio" Type="DateTime" Precision="3" />
           <Property Name="DomingoHoraFIn" Type="DateTime" Precision="3" />
-          <Property Name="Lunes" Type="Boolean" Nullable="false" />
-          <Property Name="Martes" Type="Boolean" Nullable="false" />
-          <Property Name="Miercoles" Type="Boolean" Nullable="false" />
-          <Property Name="Jueves" Type="Boolean" Nullable="false" />
-          <Property Name="Viernes" Type="Boolean" Nullable="false" />
-          <Property Name="Sabado" Type="Boolean" Nullable="false" />
-          <Property Name="Domingo" Type="Boolean" Nullable="false" />
+          <Property Name="Lunes" Type="Boolean" />
+          <Property Name="Martes" Type="Boolean" />
+          <Property Name="Miercoles" Type="Boolean" />
+          <Property Name="Jueves" Type="Boolean" />
+          <Property Name="Viernes" Type="Boolean" />
+          <Property Name="Sabado" Type="Boolean" />
+          <Property Name="Domingo" Type="Boolean" />
           <Property Name="EstadoId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Curso" Relationship="ColegioBdModel.FK_Horario_Curso" FromRole="Horario" ToRole="Curso" />
           <NavigationProperty Name="GradoAcademico" Relationship="ColegioBdModel.FK_Horario_GradoAcademico" FromRole="Horario" ToRole="GradoAcademico" />
@@ -1065,10 +1070,10 @@
           <Property Name="EstadoId" Type="Int32" />
           <NavigationProperty Name="Alumno" Relationship="ColegioBdModel.FK_Matricula" FromRole="Matricula" ToRole="Alumno" />
           <NavigationProperty Name="GradoAcademico" Relationship="ColegioBdModel.FK_Matricula_GradoAcademico" FromRole="Matricula" ToRole="GradoAcademico" />
-          <NavigationProperty Name="MatriculaCursoAula" Relationship="ColegioBdModel.FK_MatriculaCursoAula_Matricula" FromRole="Matricula" ToRole="MatriculaCursoAula" />
+          <NavigationProperty Name="MatriculaAula" Relationship="ColegioBdModel.FK_MatriculaCursoAula_Matricula" FromRole="Matricula" ToRole="MatriculaAula" />
           <NavigationProperty Name="MatriculaCursoProfesor" Relationship="ColegioBdModel.FK_MatriculaCursoProfesor_Matricula" FromRole="Matricula" ToRole="MatriculaCursoProfesor" />
         </EntityType>
-        <EntityType Name="MatriculaCursoAula">
+        <EntityType Name="MatriculaAula">
           <Key>
             <PropertyRef Name="MatriculaCursoAulaId" />
           </Key>
@@ -1077,9 +1082,8 @@
           <Property Name="CursoId" Type="Int32" />
           <Property Name="AulaId" Type="Int32" />
           <Property Name="EstadoId" Type="Int32" />
-          <NavigationProperty Name="Aula" Relationship="ColegioBdModel.FK_MatriculaCursoAula_Aula" FromRole="MatriculaCursoAula" ToRole="Aula" />
-          <NavigationProperty Name="Curso" Relationship="ColegioBdModel.FK_MatriculaCursoAula_Curso" FromRole="MatriculaCursoAula" ToRole="Curso" />
-          <NavigationProperty Name="Matricula" Relationship="ColegioBdModel.FK_MatriculaCursoAula_Matricula" FromRole="MatriculaCursoAula" ToRole="Matricula" />
+          <NavigationProperty Name="Aula" Relationship="ColegioBdModel.FK_MatriculaCursoAula_Aula" FromRole="MatriculaAula" ToRole="Aula" />
+          <NavigationProperty Name="Matricula" Relationship="ColegioBdModel.FK_MatriculaCursoAula_Matricula" FromRole="MatriculaAula" ToRole="Matricula" />
         </EntityType>
         <EntityType Name="MatriculaCursoProfesor">
           <Key>
@@ -1105,6 +1109,7 @@
           <Property Name="NotaAlfabeto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TipoNotaId" Type="Int32" Nullable="false" />
           <Property Name="EstadoId" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioRegistroId" Type="Int32" />
           <NavigationProperty Name="Alumno" Relationship="ColegioBdModel.FK_Nota_Alumno" FromRole="Nota" ToRole="Alumno" />
           <NavigationProperty Name="Examen" Relationship="ColegioBdModel.FK_Nota_Examen" FromRole="Nota" ToRole="Examen" />
           <NavigationProperty Name="TipoGenerico" Relationship="ColegioBdModel.FK_Nota_TipoNota" FromRole="Nota" ToRole="TipoGenerico" />
@@ -1158,6 +1163,7 @@
           <Property Name="Dni" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="EstadoId" Type="Int32" />
           <Property Name="RutaFoto" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GradoAcademicoCurso" Relationship="ColegioBdModel.FK_GradoAcademicoCurso_Profesor" FromRole="Profesor" ToRole="GradoAcademicoCurso" />
           <NavigationProperty Name="MatriculaCursoProfesor" Relationship="ColegioBdModel.FK_MatriculaCursoProfesor_Profesor" FromRole="Profesor" ToRole="MatriculaCursoProfesor" />
         </EntityType>
         <EntityType Name="Silabo">
@@ -1192,6 +1198,8 @@
           <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoId" Type="Int32" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -1305,12 +1313,12 @@
         </Association>
         <Association Name="FK_MatriculaCursoAula_Aula">
           <End Type="ColegioBdModel.Aula" Role="Aula" Multiplicity="0..1" />
-          <End Type="ColegioBdModel.MatriculaCursoAula" Role="MatriculaCursoAula" Multiplicity="*" />
+          <End Type="ColegioBdModel.MatriculaAula" Role="MatriculaAula" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Aula">
               <PropertyRef Name="AulaId" />
             </Principal>
-            <Dependent Role="MatriculaCursoAula">
+            <Dependent Role="MatriculaAula">
               <PropertyRef Name="AulaId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1335,18 +1343,6 @@
               <PropertyRef Name="CursoId" />
             </Principal>
             <Dependent Role="GradoAcademicoCurso">
-              <PropertyRef Name="CursoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MatriculaCursoAula_Curso">
-          <End Type="ColegioBdModel.Curso" Role="Curso" Multiplicity="0..1" />
-          <End Type="ColegioBdModel.MatriculaCursoAula" Role="MatriculaCursoAula" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Curso">
-              <PropertyRef Name="CursoId" />
-            </Principal>
-            <Dependent Role="MatriculaCursoAula">
               <PropertyRef Name="CursoId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1435,6 +1431,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GradoAcademicoCurso_Profesor">
+          <End Type="ColegioBdModel.Profesor" Role="Profesor" Multiplicity="0..1" />
+          <End Type="ColegioBdModel.GradoAcademicoCurso" Role="GradoAcademicoCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="ProfesorId" />
+            </Principal>
+            <Dependent Role="GradoAcademicoCurso">
+              <PropertyRef Name="ProfesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Silabo_CursoGradoAcademico">
           <End Type="ColegioBdModel.GradoAcademicoCurso" Role="GradoAcademicoCurso" Multiplicity="0..1" />
           <End Type="ColegioBdModel.Silabo" Role="Silabo" Multiplicity="*" />
@@ -1449,12 +1457,12 @@
         </Association>
         <Association Name="FK_MatriculaCursoAula_Matricula">
           <End Type="ColegioBdModel.Matricula" Role="Matricula" Multiplicity="0..1" />
-          <End Type="ColegioBdModel.MatriculaCursoAula" Role="MatriculaCursoAula" Multiplicity="*" />
+          <End Type="ColegioBdModel.MatriculaAula" Role="MatriculaAula" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Matricula">
               <PropertyRef Name="MatriculaId" />
             </Principal>
-            <Dependent Role="MatriculaCursoAula">
+            <Dependent Role="MatriculaAula">
               <PropertyRef Name="MatriculaId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1672,6 +1680,7 @@
               <MappingFragment StoreEntitySet="GradoAcademicoCurso">
                 <ScalarProperty Name="Silabos" ColumnName="Silabos" />
                 <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
+                <ScalarProperty Name="ProfesorId" ColumnName="ProfesorId" />
                 <ScalarProperty Name="GradoAcademicoId" ColumnName="GradoAcademicoId" />
                 <ScalarProperty Name="CursoId" ColumnName="CursoId" />
                 <ScalarProperty Name="GradoAcademicoCursoId" ColumnName="GradoAcademicoCursoId" />
@@ -1721,9 +1730,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MatriculaCursoAula">
-            <EntityTypeMapping TypeName="ColegioBdModel.MatriculaCursoAula">
-              <MappingFragment StoreEntitySet="MatriculaCursoAula">
+          <EntitySetMapping Name="MatriculaAula">
+            <EntityTypeMapping TypeName="ColegioBdModel.MatriculaAula">
+              <MappingFragment StoreEntitySet="MatriculaAula">
                 <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
                 <ScalarProperty Name="AulaId" ColumnName="AulaId" />
                 <ScalarProperty Name="CursoId" ColumnName="CursoId" />
@@ -1746,6 +1755,7 @@
           <EntitySetMapping Name="Nota">
             <EntityTypeMapping TypeName="ColegioBdModel.Nota">
               <MappingFragment StoreEntitySet="Nota">
+                <ScalarProperty Name="UsuarioRegistroId" ColumnName="UsuarioRegistroId" />
                 <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
                 <ScalarProperty Name="TipoNotaId" ColumnName="TipoNotaId" />
                 <ScalarProperty Name="NotaAlfabeto" ColumnName="NotaAlfabeto" />
@@ -1827,6 +1837,8 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="ColegioBdModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />

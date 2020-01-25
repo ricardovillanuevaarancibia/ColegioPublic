@@ -1,25 +1,55 @@
-﻿@model MvcTest.Models.Company
+﻿@model ColegioPublic.ViewsModel.ExamenVM.AddEditExamenViewModel
 
 
-<div>
-    @Html.LabelFor(m => m.Name)
-    @Html.EditorFor(m => m.Name)
-</div>
-<fieldset>
-    <legend>Employees</legend>
-    <div id="new-Employee">
-        @foreach (var Employee in Model.Employees)
-        {
-            Html.RenderPartial("_Employee", Employee);
-        }
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <form class="form" action="@Url.Action("AddEditExamen","Examen")" method="post">
+                    <div class="form-group row">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Tipo Examen</th>
+                                <th>Fecha Examen</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody  class="new-Examen">
+                             @foreach (var item in Model.LstExamenes)
+                             {
+                            <tr>
+                                <td class="hide">@item.TipoExamenId</td>
+                                <td>@item.NombreTipoExamen</td>
+                                <td>@item.FechaExamen.Value.ToShortDateString()</td>
+                                <td> <a href="#" class="btn btn-red delete">Eliminar</a></td>
+                            </tr>
+                             }
+                        </tbody>
+                    </table>
+                           
+                    </div>
+                    <div class="form-actions text-right">
+                        <input type="button" id="addExamen" name="addExamen" value="Agregar Examen" class="btn btn-dark" />
+                     
+                    </div>
+                    <div class="form-actions">
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                            <button type="button" class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
     </div>
-    <div>
-        <input type="button" id="addemployee" name="addemployee" value="Add Employee" />
-        <br />
-    </div>
-    <br />
-  
-</fieldset>
-<div>
-    <input type="submit" value="Submit" />
 </div>
+
+
+
+
+
+
+
+

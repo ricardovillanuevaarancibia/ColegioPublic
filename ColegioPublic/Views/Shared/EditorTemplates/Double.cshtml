@@ -1,0 +1,7 @@
+﻿@model Double?
+@{
+    Layout = ConstantHelpers.LAYOUT.EDITOR_TEMPLATE_LAYOUT_PATH;
+}
+
+@Html.TextBoxFor(x => x, new { Type = "number", @class = "form-control", @step = "any" })
+@Html.ValidationMessageFor(x => x)

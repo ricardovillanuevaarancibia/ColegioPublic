@@ -1,0 +1,16 @@
+﻿@model Entel.SIOYM.Web.Areas.Ticket.Models.GrupoTrabajoModel
+
+<td>
+    @using (Html.BeginCollectionItem("LstAsociaciones"))
+    {
+        @Html.HiddenFor(m => m.GrupoId)
+        @Html.HiddenFor(m => m.Nombre)
+        <div class="demo-checkbox">
+            @Html.CheckBoxFor(x => Model.Checked, new { @class = "js-switch" })
+            @Html.LabelFor(x => Model.Checked)
+        </div>
+        @*<input type="checkbox" class="filled-in chk-col-cyan" id="@Model.Checked" name="@Model.Checked" value="true" @(Model.Checked ? "checked" : String.Empty)>
+            <label for="@Model.Checked">Asociar</label>*@
+    }
+</td>
+

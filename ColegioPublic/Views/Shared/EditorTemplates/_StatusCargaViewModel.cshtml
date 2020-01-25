@@ -1,0 +1,8 @@
+﻿@model Entel.SIOYM.Web.Areas.Inventory.ViewModels.Upload._StatusCargaViewModel
+
+
+    @using (Html.BeginCollectionItem("LstStatusCarga"))
+    {
+        @Html.HiddenFor(x => x.FilaId)
+        @Html.HiddenFor(x => x.Status, new { @class="checkeado"})
+    }

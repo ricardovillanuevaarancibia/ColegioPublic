@@ -18,7 +18,7 @@ namespace Data.Model
         public Aula()
         {
             this.AlumnoAula = new HashSet<AlumnoAula>();
-            this.MatriculaCursoAula = new HashSet<MatriculaCursoAula>();
+            this.MatriculaAula = new HashSet<MatriculaAula>();
         }
     
         public int AulaId { get; set; }
@@ -29,6 +29,6 @@ namespace Data.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AlumnoAula> AlumnoAula { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MatriculaCursoAula> MatriculaCursoAula { get; set; }
+        public virtual ICollection<MatriculaAula> MatriculaAula { get; set; }
     }
 }

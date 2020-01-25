@@ -1,0 +1,60 @@
+﻿@model ColegioPublic.ViewsModel.NotaVM.AddEditNotaViewModel
+@{
+    ViewBag.Title = "Agregar Nota";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Agregar Notas</h4>
+                <form class="form" action="@Url.Action("AddEditNota", "Nota")" method="post">
+                    @Html.HiddenFor(x => x.CursoId)
+                    <div class="form-group row">
+                        @Html.LabelFor(x => x.ExamenId, new { @class = "col-sm-2 col-form-label" })
+
+                        <div class="col-sm-10">
+                            @Html.DropDownListFor(x => x.ExamenId, new SelectList(Model.LstExamen, "Value", "Text"), new { @class = "custom-select" })
+
+                        </div>
+                        @Html.ValidationMessageFor(x => x.ExamenId)
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Alumno</th>
+                                <th>Nota</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.LstAlumno)
+                            {
+                                <tr>
+                                    <td>@($"{item.Nombre} {item.ApellidoPaterno} {item.ApellidoMaterno}") </td>
+                                    <td><input  type="text" value="0" name="@(item.AlumnoId)" class="form-control"/>  </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+                    <div class="form-actions">
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                            <button type="button" class="btn btn-dark">Cancel</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(function () {
+
+        });
+    </script>
+}
