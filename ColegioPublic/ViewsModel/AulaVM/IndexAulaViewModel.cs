@@ -11,7 +11,7 @@ namespace ColegioPublic.ViewsModel.AulaVM
     public class IndexAulaViewModel
     {
         [Display(Name = "Filtro")]
-        public int? q { get; set; }
+        public string q { get; set; }
         public List<Aula> aula { get; set; }
         internal void Fill(CargarDatosContext cd, IndexAulaViewModel model)
         {

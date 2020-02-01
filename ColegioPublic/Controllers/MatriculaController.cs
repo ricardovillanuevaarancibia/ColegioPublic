@@ -54,5 +54,22 @@ namespace ColegioPublic.Controllers
                 return  RedirectToAction("Index",new {q = model.alumnoId });
             }
         }
+
+        public ActionResult Delete(int MatriculaId)
+        {
+
+            try
+            {
+                AddEditMatriculaViewModel model = new AddEditMatriculaViewModel();
+                model.Delete(_CargarDatosContext, MatriculaId);
+                return Json(new { Value = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Value = false }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
     }
 }

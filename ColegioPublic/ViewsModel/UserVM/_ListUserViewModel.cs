@@ -20,9 +20,9 @@ namespace ColegioPublic.ViewsModel.UserVM
             this.p = p ?? 1;
             base.q = model.q;
 
-            var query = context._context.User.AsQueryable();
-            if (model.q.HasValue)
-                query = query.Where(x => x.UserId == this.q);
+            var query = context._context.User.Where(x => x.EstadoId == 1).AsQueryable();
+            if (!string.IsNullOrEmpty(model.q))
+                query = query.Where(x => x.UserName.Contains(model.q) || x.Rol.Contains(model.q));
             LstRegistro = query.OrderBy(x => x.UserId).ToPagedList(this.p, 10);
         }
     }

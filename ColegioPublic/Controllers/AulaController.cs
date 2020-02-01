@@ -53,11 +53,22 @@ namespace ColegioPublic.Controllers
                 throw;
             }
         }
-        public ActionResult Delete(int? AulaId)
+
+        public ActionResult Delete(int AulaId)
         {
-            AddEditAulaViewModel model = new AddEditAulaViewModel();
-            model.Fill(_CargarDatosContext, AulaId);
-            return View(model);
+
+            try
+            {
+                AddEditAulaViewModel model = new AddEditAulaViewModel();
+                model.Delete(_CargarDatosContext, AulaId);
+                return Json(new { Value = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Value = false }, JsonRequestBehavior.AllowGet);
+            }
+
         }
     }
 }

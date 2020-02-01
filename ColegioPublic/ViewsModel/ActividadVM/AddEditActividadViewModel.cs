@@ -18,10 +18,9 @@ namespace ColegioPublic.ViewsModel.ActividadVM
         public DateTime? FechaInicio{ get; set; }
         [Display(Name = "Fecha de Fin")]
         public DateTime? FechaFin { get; set; }
+        [Display(Name ="Descripción")]
         public string descripcion { get; set; }
         public int EstadoId { get; set; }
-
-
         public void Fill(CargarDatosContext context, int? actividadId)
         {
             var actividad = context._context.Actividades.Find(actividadId);

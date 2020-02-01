@@ -1,6 +1,7 @@
 ﻿using ColegioPublic.Helper;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,9 +9,11 @@ namespace ColegioPublic.ViewsModel.HorarioVM
 {
     public class AddEditHorarioViewModel
     {
-
+        [Display(Name ="Horario")]
         public int HorarioId { get; set; }
+        [Display(Name="Grado Academico")]
         public int GradoAcademicoId { get; set; }
+        [Display(Name ="Curso")]
         public int CursoId { get; set; }
         public DateTime? LuneshoraInicio { get; set; }
         public DateTime? LunesHoraFin { get; set; }

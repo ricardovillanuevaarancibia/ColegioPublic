@@ -10,7 +10,7 @@ namespace ColegioPublic.ViewsModel.MatriculaVM
     public class IndexMatriculaViewModel
     {
         [Display(Name = "Filtro")]
-        public int? q { get; set; }
+        public string q { get; set; }
 
         public void Fill(CargarDatosContext cd, IndexMatriculaViewModel model)
         {

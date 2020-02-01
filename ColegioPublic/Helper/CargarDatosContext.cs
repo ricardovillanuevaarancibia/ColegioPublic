@@ -9,7 +9,7 @@ namespace ColegioPublic.Helper
     public class CargarDatosContext
     {
         public ColegioBdEntities _context;
-        public HttpSessionStateBase session;
+        public HttpSessionStateBase _session;
 
 
         // This is the static method that controls the access to the singleton
@@ -17,9 +17,10 @@ namespace ColegioPublic.Helper
         // it into the static field. On subsequent runs, it returns the client
         // existing object stored in the static field.
 
-        public CargarDatosContext()
+        public CargarDatosContext(HttpSessionStateBase  sesion)
         {
             GetInstance();
+            GetSession(sesion);
         }
         public ColegioBdEntities GetInstance()
         {
@@ -28,6 +29,14 @@ namespace ColegioPublic.Helper
                 _context = new ColegioBdEntities();
             }
             return _context;
+        }
+        public HttpSessionStateBase GetSession(HttpSessionStateBase session)
+        {
+            if (_session == null)
+            {
+                _session = session;
+            }
+            return _session;
         }
     }
 }

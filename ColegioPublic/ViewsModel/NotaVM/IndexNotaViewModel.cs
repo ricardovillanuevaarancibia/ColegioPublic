@@ -14,7 +14,9 @@ namespace ColegioPublic.ViewsModel.NotaVM
     {
         [Display(Name = "Filtro")]
         public int? q { get; set; }
+        [Display(Name="Grado")]
         public int ?GradoId { get; set; }
+        [Display(Name="Sección")]
         public int ?SeccionId { get; set; }
         public List<SelectListItem> LstGrados;
         public List<SelectListItem> LstSeccion;
@@ -25,6 +27,7 @@ namespace ColegioPublic.ViewsModel.NotaVM
             this.curso = cd._context.Curso.ToList();
             this.LstGrados = cd._context.GradoAcademico.Select(x => new SelectListItem() {Value=x.GradoAcademicoId.ToString(),Text=x.Nombre }).ToList();
            LstSeccion=cd._context.Aula.Select(x => new SelectListItem() {Value = x.AulaId.ToString() ,Text = x.CodigoAula  }).ToList();
+            this.GradoId = Convert.ToInt32(LstGrados.FirstOrDefault().Value);
     }
     }
 }

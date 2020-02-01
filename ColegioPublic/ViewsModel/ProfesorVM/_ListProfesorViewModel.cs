@@ -21,9 +21,9 @@ namespace ColegioPublic.ViewsModel.ProfesorVM
             this.p = p ?? 1;
             base.q = model.q;
 
-            var query = context._context.Profesor.AsQueryable();
-            if (model.q.HasValue)
-                query = query.Where(x => x.ProfesorId == this.q);
+            var query = context._context.Profesor.Where(x => x.EstadoId ==1).AsQueryable();
+            if (!string.IsNullOrEmpty(model.q))
+                query = query.Where(x => x.Nombre.Contains(model.q) || x.ApellidoMaterno.Contains(model.q) || x.ApellidoPaterno.Contains(model.q)|| x.Dni.Contains(model.q));
             LstRegistro = query.OrderBy(x => x.ProfesorId).ToPagedList(this.p, 10);
         }
     }

@@ -20,9 +20,9 @@ namespace ColegioPublic.ViewsModel.ActividadVM
             this.p = p ?? 1;
             base.q = model.q;
 
-            var query = context._context.Actividades.AsQueryable();
-            if (model.q.HasValue)
-                query = query.Where(x => x.ActividadesId == this.q);
+            var query = context._context.Actividades.Where(x => x.EstadoId==1).AsQueryable();
+            if (!string.IsNullOrEmpty(model.q))
+                query = query.Where(x => x.Nombre.Contains(model.q));
             LstRegistro = query.OrderBy(x => x.ActividadesId).ToPagedList(this.p, 10);
         }
     }

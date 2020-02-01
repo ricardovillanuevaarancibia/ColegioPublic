@@ -20,9 +20,9 @@ namespace ColegioPublic.ViewsModel.UsuarioMovilVM
             this.p = p ?? 1;
             base.q = model.q;
 
-            var query = context._context.Usuario.AsQueryable();
-            if (model.q.HasValue)
-                query = query.Where(x => x.UsuarioId == this.q);
+            var query = context._context.Usuario.Where(x => x.EstadoId == 1).AsQueryable();
+            if (string.IsNullOrEmpty(model.q))
+                query = query.Where(x => x.UserName.Contains(model.q) || x.Nombre.Contains(model.q)|| x.ApellidosM.Contains(model.q)|| x.ApellidosP.Contains(model.q)|| x.Correo.Contains(model.q)|| x.Telefono.Contains(model.q));
             LstRegistro = query.OrderBy(x => x.UsuarioId).ToPagedList(this.p, 10);
         }
     }

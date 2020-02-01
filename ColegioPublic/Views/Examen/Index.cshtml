@@ -7,51 +7,51 @@
         <div class="card">
             <div class="card-body">
 
+                <form action="@Url.Action("AddEditExamen","Examen")" method="post">
+                    <div class="form-group row">
+                        @Html.LabelFor(x => x.GradoAcademicoId, new { @class = "col-sm-2 col-form-label" })
 
-                <div class="form-group row">
-                    @Html.LabelFor(x => x.GradoAcademicoId, new { @class = "col-sm-2 col-form-label" })
+                        <div class="col-sm-10">
+                            @Html.DropDownListFor(x => x.GradoAcademicoId, new SelectList(Model.LstGradoAcademico, "Value", "Text"), new { @class = "custom-select" })
 
-                    <div class="col-sm-10">
-                        @Html.DropDownListFor(x => x.GradoAcademicoId, new SelectList(Model.LstGradoAcademico, "Value", "Text"), new { @class = "custom-select" })
-
+                        </div>
+                        @Html.ValidationMessageFor(x => x.GradoAcademicoId)
                     </div>
-                    @Html.ValidationMessageFor(x => x.GradoAcademicoId)
-                </div>
-                <div class="form-group row">
-                    @Html.LabelFor(x => x.CursoId, new { @class = "col-sm-2 col-form-label" })
+                    <div class="form-group row">
+                        @Html.LabelFor(x => x.CursoId, new { @class = "col-sm-2 col-form-label" })
 
-                    <div class="col-sm-10">
-                        @Html.DropDownListFor(x => x.CursoId, new SelectList(Model.LstCursoByGradoAcademico, "Value", "Text"), new { @class = "custom-select" })
+                        <div class="col-sm-10">
+                            @Html.DropDownListFor(x => x.CursoId, new SelectList(Model.LstCursoByGradoAcademico, "Value", "Text"), new { @class = "custom-select" })
 
+                        </div>
+                        @Html.ValidationMessageFor(x => x.CursoId)
                     </div>
-                    @Html.ValidationMessageFor(x => x.CursoId)
-                </div>
 
-                <div class="form-group row">
-                    @Html.LabelFor(x => x.TipoExamenId, new { @class = "col-sm-2 col-form-label" })
+                    <div class="form-group row">
+                        @Html.LabelFor(x => x.TipoExamenId, new { @class = "col-sm-2 col-form-label" })
 
-                    <div class="col-sm-4">
-                        @Html.DropDownListFor(x => x.TipoExamenId, new SelectList(Model.LstTipoExamen, "Value", "Text"), new { @class = "custom-select" })
+                        <div class="col-sm-4">
+                            @Html.DropDownListFor(x => x.TipoExamenId, new SelectList(Model.LstTipoExamen, "Value", "Text"), new { @class = "custom-select" })
 
+                        </div>
+                        @Html.ValidationMessageFor(x => x.TipoExamenId)
                     </div>
-                    @Html.ValidationMessageFor(x => x.TipoExamenId)
-                </div>
-                <div class="form-group row">
+                    <div class="form-group row">
 
-                    @Html.LabelFor(x => x.FechaExamen, new { @class = "col-2 col-form-label" })
+                        @Html.LabelFor(x => x.FechaExamen, new { @class = "col-2 col-form-label" })
 
-                    <div class="col-4">
+                        <div class="col-4">
 
-                        @Html.TextBoxFor(x => x.FechaExamen, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+                            @Html.TextBoxFor(x => x.FechaExamen, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div><button class="btn btn-success">Agregar</button></div>
-                </div>
+
+                    <div class="form-group">
+                        <div><button type="submit" class="btn btn-success">Agregar</button></div>
+                    </div>
+                </form>
+
             </div>
-         
-             
-          
 
             <div id="renderParcial" class="table-responsive">
               
@@ -60,7 +60,6 @@
      </div>
     </div>
 </div>
-
 
 @section scripts{
 
@@ -156,7 +155,8 @@
             examenDiv.remove();
         }
 
-         });
+        });
+
 
     </script>
 

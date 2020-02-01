@@ -56,5 +56,21 @@ namespace ColegioPublic.Controllers
             }
             
         }
+        public ActionResult Delete(int CursoId)
+        {
+
+            try
+            {
+                AddEditCursoViewModel model = new AddEditCursoViewModel();
+                model.Delete(_CargarDatosContext, CursoId);
+                return Json(new { Value = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Value = false }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
     }
 }

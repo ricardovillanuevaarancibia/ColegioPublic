@@ -23,6 +23,7 @@ namespace ColegioPublic.ViewsModel.AlumnoVM
         public int EstadoId { get; set; }
         public HttpPostedFileBase Image { get; set; }
         [Required]
+        [Display(Name="Ruta de Foto")]
         public string RutaFoto { get; set; }
         public void Fill(CargarDatosContext context,int ? alumnoId)
         {

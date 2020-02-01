@@ -11,7 +11,7 @@ namespace ColegioPublic.ViewsModel.UsuarioMovilVM
     public class IndexUsuarioMovilViewModel
     {
         [Display(Name = "Filtro")]
-        public int? q { get; set; }
+        public string q { get; set; }
         public List<Usuario> usuario { get; set; }
         internal void Fill(CargarDatosContext cd, IndexUsuarioMovilViewModel model)
         {

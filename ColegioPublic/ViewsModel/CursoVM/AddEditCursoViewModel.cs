@@ -1,6 +1,7 @@
 ﻿using ColegioPublic.Helper;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Transactions;
 using System.Web;
@@ -10,10 +11,11 @@ namespace ColegioPublic.ViewsModel.CursoVM
     public class AddEditCursoViewModel
     {
         public int? cursoId { get; set; }
+        [Display(Name ="Nombre")]
         public string nombre { get; set; }
+        [Display(Name ="Imagen")]
         public string image { get; set; }
         public int estadoId { get; set; }
-
         public void Fill(CargarDatosContext context, int? cursoId)
         {
             var curso = context._context.Curso.Find(cursoId);
@@ -47,15 +49,14 @@ namespace ColegioPublic.ViewsModel.CursoVM
                 }
                 catch (Exception ex)
                 {
-
                     throw;
                 }
 
             }
         }
-        public void Delete(CargarDatosContext context, int alumnoId)
+        public void Delete(CargarDatosContext context, int cursoId)
         {
-            var curso = context._context.Curso.Find(alumnoId);
+            var curso = context._context.Curso.Find(cursoId);
             if (curso != null)
                 curso.EstadoId = 0;
             context._context.SaveChanges();

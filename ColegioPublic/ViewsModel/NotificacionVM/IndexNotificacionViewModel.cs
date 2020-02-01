@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ColegioPublic.ViewsModel.Notificacion
+namespace ColegioPublic.ViewsModel.NotificacionVM
 {
-    public class AddEditNotificacionViewModel
+    public class IndexNotificacionViewModel
     {
     }
 }

@@ -1,4 +1,4 @@
-﻿@model ColegioPublic.ViewsModel.CursoVM._ListCursoViewModel
+﻿@model ColegioPublic.ViewsModel.UsuarioMovilVM._ListUsuarioMovilViewModel
 @using PagedList.Mvc;
 @using PagedList;
 @using ColegioPublic.Helper;
@@ -7,10 +7,12 @@
     <thead class="thead-dark">
         <tr>
             <th>Nombre</th>
-            <th>Acciones</th>
+            <th>Apellidos</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Opciones</th>
         </tr>
     </thead>
-
     <tbody>
         @if (Model.LstRegistro.Count > 0)
         {
@@ -18,21 +20,25 @@
             {
                 <tr>
                     <td>@item.Nombre</td>
-
+                    <td>@($"{item.ApellidosP} {item.ApellidosM}")</td>
+                    <td>@item.Correo</td>
+                    <td>@item.Telefono</td>
                     <td>
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</button>
                             <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(696px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                <a class="dropdown-item" href="@Url.Action("AddEditCurso","Curso", new {idCurso = item.CursoId})">Editar</a>
-                                <a class="dropdown-item eliminarCurso" href="@Url.Action("Delete","Curso", new {CursoId = item.CursoId})">Eliminar</a>
+                                <a class="dropdown-item" href="@Url.Action("AddNotification","Notificacion", new {usuarioId = item.UsuarioId})">Agregar Notificación</a>
+                                <a class="dropdown-item" href="@Url.Action("_ListNotificacion","Notificacion", new {usuarioId = item.UsuarioId})">Lista de Notificación</a>
                             </div>
                         </div>
                     </td>
                 </tr>
             }
         }
-
     </tbody>
 </table>
-@Html.PagedListPager(Model.LstRegistro, p => Url.Action("_ListCurso", new { p = p,model = Model }), PaginationHelper.AjaxPagerOptionsDefault)
+@Html.PagedListPager(Model.LstRegistro, p => Url.Action("_ListUsuarioMovil", new { p = p }), PaginationHelper.AjaxPagerOptionsDefault)
+
+
+
 

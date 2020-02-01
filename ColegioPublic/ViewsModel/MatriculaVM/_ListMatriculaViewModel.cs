@@ -19,12 +19,12 @@ namespace ColegioPublic.ViewsModel.MatriculaVM
         {
             this.p = p ?? 1;
             base.q = model.q;
+            base.q = base.q.Trim();
+            var query = context._context.Matricula.Where(x => x.EstadoId==1).AsQueryable();
+            if (!string.IsNullOrEmpty(model.q))
+              query = query.Where(x => x.AlumnoId ==(Convert.ToInt32(model.q.Trim()))|| x.Alumno.Dni.Contains(model.q));
 
-            var query = context._context.Matricula.AsQueryable();
-            if (model.q.HasValue)
-              query = query.Where(x => x.AlumnoId == q);
-
-            LstRegistro = query.OrderBy(x => x.MatriculaId).ToPagedList(this.p, 10);
+            LstRegistro = query.OrderBy(x => x.GradoAcademicoId).ToPagedList(this.p, 10);
         }
     }
 }

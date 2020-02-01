@@ -11,7 +11,7 @@ namespace ColegioPublic.ViewsModel.ProfesorVM
     public class IndexProfesorViewModel
     {
         [Display(Name = "Filtro")]
-        public int? q { get; set; }
+        public string q { get; set; }
         public List<Profesor> alumnos { get; set; }
 
         public void Fill(CargarDatosContext cd, IndexProfesorViewModel model)

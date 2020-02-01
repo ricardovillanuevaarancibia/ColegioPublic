@@ -21,10 +21,10 @@ namespace ColegioPublic.ViewsModel.CursoVM
             this.p = p ?? 1;
             base.q = model.q;
 
-            var query = context._context.Curso.AsQueryable();
-            if (model.q.HasValue)
-                query = query.Where(x => x.CursoId == this.q);
-            LstRegistro = query.OrderBy(x => x.CursoId).ToPagedList(this.p, 10);
+            var query = context._context.Curso.Where(x => x.EstadoId == 1).AsQueryable();
+            if (!string.IsNullOrEmpty(model.q))
+                query = query.Where(x => x.Nombre.Contains(model.q));
+            LstRegistro = query.OrderBy(x => x.Nombre).ToPagedList(this.p, 10);
         }
     }
 }

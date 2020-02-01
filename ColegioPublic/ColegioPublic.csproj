@@ -216,9 +216,9 @@
     <Compile Include="ViewsModel\NotaVM\AddEditNotaViewModel.cs" />
     <Compile Include="ViewsModel\NotaVM\IndexNotaViewModel.cs" />
     <Compile Include="ViewsModel\NotaVM\_ListCursoViewModel.cs" />
-    <Compile Include="ViewsModel\Notificacion\AddEditNotificacionViewModel.cs" />
-    <Compile Include="ViewsModel\Notificacion\IndexNotificacionViewModel.cs" />
-    <Compile Include="ViewsModel\Notificacion\_ListNotificacionViewModel.cs" />
+    <Compile Include="ViewsModel\NotificacionVM\AddEditNotificacionViewModel.cs" />
+    <Compile Include="ViewsModel\NotificacionVM\IndexNotificacionViewModel.cs" />
+    <Compile Include="ViewsModel\NotificacionVM\_ListNotificacionViewModel.cs" />
     <Compile Include="ViewsModel\ProfesorVM\AddEditProfesorViewModel.cs" />
     <Compile Include="ViewsModel\ProfesorVM\IndexProfesorViewModel.cs" />
     <Compile Include="ViewsModel\ProfesorVM\_ListProfesorViewModel.cs" />
@@ -258,12 +258,15 @@
     <Content Include="Content\assets\images\browser\photoshop.jpg" />
     <Content Include="Content\assets\images\browser\safari-logo.png" />
     <Content Include="Content\assets\images\browser\sketch.jpg" />
+    <Content Include="Content\assets\images\colegio.jpeg" />
     <Content Include="Content\assets\images\custom-select.png" />
     <Content Include="Content\assets\images\favicon.png" />
+    <Content Include="Content\assets\images\fse.png" />
     <Content Include="Content\assets\images\logo-icon.png" />
     <Content Include="Content\assets\images\logo-light-icon.png" />
     <Content Include="Content\assets\images\logo-light-text.png" />
     <Content Include="Content\assets\images\logo-text.png" />
+    <Content Include="Content\assets\images\santiago.png" />
     <Content Include="Content\assets\images\tooltip\Euclid.png" />
     <Content Include="Content\assets\images\users\1.jpg" />
     <Content Include="Content\assets\images\users\2.jpg" />
@@ -1195,6 +1198,10 @@
     <Content Include="Views\Nota\Index.cshtml" />
     <Content Include="Views\Nota\_ListCurso.cshtml" />
     <Content Include="Views\Nota\AddEditNota.cshtml" />
+    <Content Include="Views\Notificacion\Index.cshtml" />
+    <Content Include="Views\Notificacion\_ListUsuarioMovil.cshtml" />
+    <Content Include="Views\Notificacion\_ListNotificacion.cshtml" />
+    <Content Include="Views\Notificacion\AddNotification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1205,7 +1212,6 @@
     <Folder Include="Views\Asistencia\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\GradoAcademico\" />
-    <Folder Include="Views\Notificacion\" />
     <Folder Include="Views\Permiso\" />
   </ItemGroup>
   <ItemGroup>

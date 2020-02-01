@@ -22,7 +22,7 @@ namespace ColegioPublic.ViewsModel.NotaVM
             base.GradoId = model.GradoId;
             base.SeccionId = model.SeccionId;
 
-            var query = context._context.GradoAcademicoCurso.AsQueryable();
+            var query = context._context.GradoAcademicoCurso.Where(x=> x.EstadoId== 1).AsQueryable();
             if (model.q.HasValue)
                 query = query.Where(x => x.CursoId == this.q);
             if (model.GradoId.HasValue)

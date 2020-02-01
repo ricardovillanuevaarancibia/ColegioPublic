@@ -57,5 +57,15 @@ namespace ColegioPublic.ViewsModel.MatriculaVM
             LstGradoAcademico = context._context.GradoAcademico.Select(x => new SelectListItem { Value = x.GradoAcademicoId.ToString(), Text = x.Nombre }).ToList();
 
         }
+
+        public void Delete(CargarDatosContext context, int matriculaId)
+        {
+            var matricula = context._context.Matricula.Find(matriculaId);
+            if (matricula != null)
+                matricula.EstadoId = 0;
+            context._context.SaveChanges();
+
+
+        }
     }
 }

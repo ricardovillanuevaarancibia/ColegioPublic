@@ -22,6 +22,7 @@ namespace ColegioPublic.Controllers
             var user =_CargarDatosContext._context.User.Where(x => x.UserName == model.UserName && x.Password == model.Password).FirstOrDefault();
             if (user!=null) {
                 Session.Add(SessionExtencion.Datos.UsuarioId.ToString(), user.UserId);
+      
             }
             else
             {

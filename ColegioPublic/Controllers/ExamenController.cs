@@ -23,8 +23,8 @@ namespace ColegioPublic.Controllers
             return PartialView(model);
         }
 
-
-        public ActionResult AddEditExamen(AddEditExamenViewModel model)
+        [HttpPost]
+        public ActionResult AddEditExamen(IndexExamenViewModel model)
         {
             try
             {
@@ -44,6 +44,24 @@ namespace ColegioPublic.Controllers
         {
             var data = _CargarDatosContext._context.GradoAcademicoCurso.Where(x => x.GradoAcademicoId == gradoId).Select(x => new SelectListItem() { Value = x.GradoAcademicoCursoId.ToString(), Text = x.Curso.Nombre }).ToList();
             return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult Delete(int ExamenId)
+        {
+
+            try
+            {
+                AddEditExamenViewModel model = new AddEditExamenViewModel();
+                model.Delete(_CargarDatosContext, ExamenId);
+                return Json(new { Value = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Value = false }, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
     }

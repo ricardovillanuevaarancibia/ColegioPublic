@@ -24,10 +24,10 @@ namespace ColegioPublic.Controllers
             return PartialView(listModel);
         }
 
-        public ActionResult AddEditNota (int CursoId)
+        public ActionResult AddEditNota (int CursoId,int GradoId)
         {
             AddEditNotaViewModel newNotas = new AddEditNotaViewModel();
-            newNotas.Fill(_CargarDatosContext,CursoId);
+            newNotas.Fill(_CargarDatosContext,CursoId,GradoId);
             return View(newNotas);
         }
         [HttpPost]

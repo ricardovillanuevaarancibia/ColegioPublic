@@ -11,7 +11,7 @@ namespace ColegioPublic.ViewsModel.ActividadVM
     public class IndexActividadViewModel
     {
         [Display(Name = "Filtro")]
-        public int? q { get; set; }
+        public string q { get; set; }
         public List<Actividades> actividades { get; set; }
         internal void Fill(CargarDatosContext cd, IndexActividadViewModel model)
         {

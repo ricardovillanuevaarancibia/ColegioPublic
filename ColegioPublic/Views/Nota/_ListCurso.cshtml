@@ -23,9 +23,9 @@
 
                     <td>
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</button>
                             <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(696px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                <a class="dropdown-item" href="@Url.Action("AddEditNota","Nota", new {CursoId = item.CursoId})">Agregar Notas</a>
+                                <a class="dropdown-item" href="@Url.Action("AddEditNota","Nota", new {CursoId = item.CursoId,GradoId = Model.GradoId})">Agregar Notas</a>
                             </div>
                         </div>
                     </td>

@@ -20,10 +20,10 @@ namespace ColegioPublic.ViewsModel.AulaVM
             this.p = p ?? 1;
             base.q = model.q;
 
-            var query = context._context.Aula.AsQueryable();
-            if (model.q.HasValue)
-                query = query.Where(x => x.AulaId == this.q);
-            LstRegistro = query.OrderBy(x => x.AulaId).ToPagedList(this.p, 10);
+            var query = context._context.Aula.Where(x => x.EstadoId ==1).AsQueryable();
+            if (!string.IsNullOrEmpty(model.q))
+                query = query.Where(x => x.CodigoAula.Contains(model.q));
+            LstRegistro = query.OrderBy(x => x.CodigoAula).ToPagedList(this.p, 10);
         }
     }
 }

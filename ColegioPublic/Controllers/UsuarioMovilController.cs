@@ -54,11 +54,21 @@ namespace ColegioPublic.Controllers
                 throw;
             }
         }
-        public ActionResult Delete(int? UserId)
-        {
-            AddEditUsuarioMovilViewModel model = new AddEditUsuarioMovilViewModel();
-            model.Fill(_CargarDatosContext, UserId);
-            return View(model);
+        public ActionResult Delete(int  UsuarioId)
+        { 
+            try
+            {
+                AddEditUsuarioMovilViewModel model = new AddEditUsuarioMovilViewModel();
+                model.Delete(_CargarDatosContext, UsuarioId);
+                return Json(new { Value = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Value = false }, JsonRequestBehavior.AllowGet);
+            }
+           
+      
         }
     }
 }

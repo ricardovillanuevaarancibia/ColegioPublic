@@ -1,0 +1,29 @@
+﻿@model ColegioPublic.ViewsModel.NotificacionVM._ListNotificacionViewModel
+@{
+    ViewBag.Title = "_ListNotificacion";
+}
+
+<h2>Lista de Notificaciones</h2>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Comentario</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model.LstRegistro.Count > 0)
+        {
+            foreach (var item in Model.LstRegistro)
+            {
+                <tr>
+                    <td>@item.Comentario</td>
+                    <td>@item.FechaRegistro.Value.ToShortDateString()</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+

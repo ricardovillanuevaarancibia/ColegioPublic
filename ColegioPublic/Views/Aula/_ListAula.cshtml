@@ -23,10 +23,10 @@
                     <td>@item.CapacidadMax</td>
                     <td>
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</button>
                             <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(696px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
                                 <a class="dropdown-item" href="@Url.Action("AddEditAula","Aula", new {AulaId = item.AulaId})">Editar</a>
-                                <a class="dropdown-item" href="@Url.Action("Delete","Aula", new {AulaId = item.AulaId})">Eliminar</a>
+                                <a class="dropdown-item eliminarAula" href="@Url.Action("Delete","Aula", new {AulaId = item.AulaId})">Eliminar</a>
                             </div>
                         </div>
                     </td>
@@ -36,7 +36,7 @@
 
     </tbody>
 </table>
-@Html.PagedListPager(Model.LstRegistro, p => Url.Action("_ListAula", new { p = p }), PaginationHelper.AjaxPagerOptionsDefault)
+@Html.PagedListPager(Model.LstRegistro, p => Url.Action("_ListAula", new { p = p,model = Model }), PaginationHelper.AjaxPagerOptionsDefault)
 
 
 
