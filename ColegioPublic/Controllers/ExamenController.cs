@@ -1,8 +1,10 @@
 ﻿using ColegioPublic.Extensions;
+using ColegioPublic.ViewsModel.CursoVM;
 using ColegioPublic.ViewsModel.ExamenVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,6 +12,18 @@ namespace ColegioPublic.Controllers
 {
     public class ExamenController : BaseController
     {
+
+        public ActionResult IndexCurso(IndexCursoViewModel model)
+        {
+            model.Fill(_CargarDatosContext, model);
+            return View(model);
+        }
+        public async Task<PartialViewResult> _ListCurso(int? p, IndexCursoViewModel model)
+        {
+            _ListCursoViewModel listModel = new _ListCursoViewModel();
+            await listModel.FillList(_CargarDatosContext, model, p);
+            return PartialView(listModel);
+        }
         // GET: Examen
         public ActionResult Index()
         {
@@ -47,8 +61,6 @@ namespace ColegioPublic.Controllers
             var data = _CargarDatosContext._context.GradoAcademicoCurso.Where(x => x.GradoAcademicoId == gradoId).Select(x => new SelectListItem() { Value = x.GradoAcademicoCursoId.ToString(), Text = x.Curso.Nombre }).ToList();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-
-
         public ActionResult Delete(int ExamenId)
         {
 

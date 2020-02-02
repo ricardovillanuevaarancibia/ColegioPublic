@@ -1,0 +1,96 @@
+﻿@model ColegioPublic.ViewsModel.CursoVM.IndexCursoViewModel
+@{
+    ViewBag.Title = "Lista Cursos";
+}
+
+<h2>Lista de Cursos</h2>
+
+@using (Ajax.BeginForm("_ListCurso", "Examen", new AjaxOptions
+{//GetPatients is name of method in PatientController
+    InsertionMode = InsertionMode.Replace, //target element(#patientList) will be replaced
+    UpdateTargetId = "paged-section",
+    LoadingElementId = "loader" // div with .gif loader - that is shown when data are loading
+}))
+{
+    @Html.LabelFor(x => x.q, new { })
+    <div class="input-group">
+
+        @Html.TextBoxFor(x => x.q, new { @class = "form-control" })
+        <button class="btn btn-success btn-sm" id="Filtrar"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </div>
+
+}
+<hr />
+<div class="button-group text-right">
+    <a href="@Url.Action("Index","Examen")" class="btn btn-success"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar Examen</a>
+</div>
+
+<div class="table-responsive" id="paged-section">
+    @{Html.RenderAction("_ListCurso", Model);}
+</div>
+@section scripts{
+    <script>
+
+      $(function () {
+          $(".eliminarCurso").click(function (e) {
+              e.preventDefault();
+              var url = $(this).attr("href");
+              debugger;
+              var formData = new FormData();
+              Swal.fire({
+                  title: 'Confirmación de Eliminación',
+                  text: "Está seguro de Eliminar?",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  cancelButtonText:'Cancelar',
+                  confirmButtonText: 'Si, Estoy seguro!'
+              }).then((result) => {
+                  if (result.value) {
+                      /**/
+                      $.ajax({
+                          url: url,
+                          type: "GET",
+                          data: formData,
+                          contentType: false,
+                          processData: false,
+                          async: false
+                      }).done(function (data) {
+                          var modelo = JSON.parse(JSON.stringify(data));
+                          if (modelo.Value == true) {
+                              Swal.fire(
+                                  'Se Elimino Correctamente!',
+                                  '',
+                                  'success'
+                              ).then((result) => {
+                                  if (result) {
+                                      $("#Filtrar").submit();
+                                  }
+                              });
+                          } else {
+                              Swal.fire(
+                                  'Ocurrio algún error al Eliminar!',
+                                  '',
+                                  'error'
+                              )
+                          }
+                      }).fail(function () {
+                          Swal.fire(
+                              'No se pudo Eliminar!',
+                              'Aceptar!',
+                              'error'
+                          )
+
+                      });
+                      /**/
+                  }
+              })
+
+          });
+        });
+
+
+    </script>
+}
+
