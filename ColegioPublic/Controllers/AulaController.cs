@@ -1,4 +1,5 @@
-﻿using ColegioPublic.ViewsModel.AulaVM;
+﻿using ColegioPublic.Extensions;
+using ColegioPublic.ViewsModel.AulaVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,13 +45,13 @@ namespace ColegioPublic.Controllers
 
                 AddEditAulaViewModel addEdit = new AddEditAulaViewModel();
                 addEdit.AddEdit(_CargarDatosContext, model);
-
+                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
             catch (Exception)
             {
-
-                throw;
+                this.AddNotification($"Error al guardar datos ", NotificationType.ERROR);
+                return View(model);
             }
         }
 

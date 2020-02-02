@@ -20,6 +20,11 @@ namespace ColegioPublic.ViewsModel.ActividadVM
         public DateTime? FechaFin { get; set; }
         [Display(Name ="Descripción")]
         public string descripcion { get; set; }
+        public string Titulo { get; set; }
+        public HttpPostedFileBase Image { get; set; }
+        [Required]
+        [Display(Name = "Ruta de Foto")]
+        public string Imagen { get; set; }
         public int EstadoId { get; set; }
         public void Fill(CargarDatosContext context, int? actividadId)
         {
@@ -32,7 +37,8 @@ namespace ColegioPublic.ViewsModel.ActividadVM
                 this.FechaFin = actividad.FechaFin;
                 this.descripcion = actividad.Descripcion;
                 this.EstadoId = actividad.EstadoId.Value;
-
+                this.Titulo = actividad.Titulo;
+                this.Imagen = actividad.Imagen;
             }
         }
         public void AddEdit(CargarDatosContext context, AddEditActividadViewModel model)
@@ -54,6 +60,8 @@ namespace ColegioPublic.ViewsModel.ActividadVM
                     actividad.FechaInicio = model.FechaInicio;
                     actividad.FechaFin = model.FechaFin;
                     actividad.Descripcion = model.descripcion;
+                    actividad.Titulo = model.Titulo;
+                    actividad.Imagen = SendImage.ConvertToBase64(model.Image.InputStream);
                     actividad.EstadoId = 1;
                     context._context.SaveChanges();
                     ts.Complete();

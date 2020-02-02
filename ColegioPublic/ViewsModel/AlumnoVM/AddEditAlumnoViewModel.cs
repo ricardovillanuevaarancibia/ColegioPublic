@@ -21,8 +21,9 @@ namespace ColegioPublic.ViewsModel.AlumnoVM
         [Display(Name = "Fecha de Nacimiento")]
         public DateTime? FechaNacimiento { get; set; }
         public int EstadoId { get; set; }
-        public HttpPostedFileBase Image { get; set; }
         [Required]
+        public HttpPostedFileBase Image { get; set; }
+    
         [Display(Name="Ruta de Foto")]
         public string RutaFoto { get; set; }
         public void Fill(CargarDatosContext context,int ? alumnoId)
@@ -45,11 +46,6 @@ namespace ColegioPublic.ViewsModel.AlumnoVM
             {
                 try
                 {
-
-               
-
-
-
                     var alumno = context._context.Alumno.Find(model.AlumnoId);
 
                     if (alumno == null)
@@ -63,7 +59,7 @@ namespace ColegioPublic.ViewsModel.AlumnoVM
                     alumno.ApellidoMaterno = model.ApellidoMaterno;
                     alumno.Dni = model.Dni;
                     alumno.FechaNacimiento = model.FechaNacimiento;
-                    alumno.RutaFoto= model.RutaFoto;
+                    alumno.RutaFoto = SendImage.ConvertToBase64(model.Image.InputStream);
                     alumno.EstadoId = 1;
                     context._context.SaveChanges();
                     ts.Complete();

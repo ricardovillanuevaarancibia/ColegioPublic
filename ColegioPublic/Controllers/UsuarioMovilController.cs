@@ -1,4 +1,5 @@
-﻿using ColegioPublic.ViewsModel.AlumnoVM;
+﻿using ColegioPublic.Extensions;
+using ColegioPublic.ViewsModel.AlumnoVM;
 using ColegioPublic.ViewsModel.UsuarioMovilVM;
 using System;
 using System.Collections.Generic;
@@ -45,12 +46,12 @@ namespace ColegioPublic.Controllers
 
                 AddEditUsuarioMovilViewModel addEdit = new AddEditUsuarioMovilViewModel();
                 addEdit.AddEdit(_CargarDatosContext, model);
-
+                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
             catch (Exception)
             {
-
+                this.AddNotification($"Error al guardar ", NotificationType.ERROR);
                 throw;
             }
         }

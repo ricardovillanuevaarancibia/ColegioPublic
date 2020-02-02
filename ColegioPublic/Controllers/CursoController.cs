@@ -1,4 +1,5 @@
 ﻿
+using ColegioPublic.Extensions;
 using ColegioPublic.ViewsModel.CursoVM;
 using Newtonsoft.Json;
 using System;
@@ -52,9 +53,9 @@ namespace ColegioPublic.Controllers
                 var url = ConfigurationManager.AppSettings["WebApiBase"] + "/api/Curso/Cursos/Create";
                 var response = await client.PostAsync(url, data);
                 string result = response.Content.ReadAsStringAsync().Result;
+                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
-            
         }
         public ActionResult Delete(int CursoId)
         {

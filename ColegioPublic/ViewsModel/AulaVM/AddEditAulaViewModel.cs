@@ -56,11 +56,11 @@ namespace ColegioPublic.ViewsModel.AulaVM
 
             }
         }
-        public void Delete(CargarDatosContext context, int actividadId)
+        public void Delete(CargarDatosContext context, int aulaId)
         {
-            var actividad = context._context.Actividades.Find(actividadId);
-            if (actividad != null)
-                actividad.EstadoId = 0;
+            var aula = context._context.Aula.Find(aulaId);
+            if (aula != null)
+                aula.EstadoId = 0;
             context._context.SaveChanges();
 
 

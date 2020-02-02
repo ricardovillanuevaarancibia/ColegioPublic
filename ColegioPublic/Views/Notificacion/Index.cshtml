@@ -1,6 +1,6 @@
 ﻿@model ColegioPublic.ViewsModel.UsuarioMovilVM.IndexUsuarioMovilViewModel
 @{
-    ViewBag.Title = "Lista Usuario Movil";
+    ViewBag.Title = "Notificaciones";
 }
 
 <h2>Lista de Usuarios Movil</h2>
@@ -29,12 +29,71 @@
     @{Html.RenderAction("_ListUsuarioMovil", Model);}
 </div>
 
+@section scripts{
+    <script>
+
+        $(function () {
+            $(".eliminarNotificacion").click(function (e) {
+                e.preventDefault();
+                var url = $(this).attr("href");
+                debugger;
+                var formData = new FormData();
+                Swal.fire({
+                    title: 'Confirmación de Eliminación',
+                    text: "Está seguro de Eliminar?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Si, Estoy seguro!'
+                }).then((result) => {
+                    if (result.value) {
+                        /**/
+                        $.ajax({
+                            url: url,
+                            type: "GET",
+                            data: formData,
+                            contentType: false,
+                            processData: false,
+                            async: false
+                        }).done(function (data) {
+                            var modelo = JSON.parse(JSON.stringify(data));
+                            if (modelo.Value == true) {
+                                Swal.fire(
+                                    'Se Elimino Correctamente!',
+                                    '',
+                                    'success'
+                                ).then((result) => {
+                                    if (result) {
+                                        $("#Filtrar").submit();
+                                    }
+                                });
+                            } else {
+                                Swal.fire(
+                                    'Ocurrio algún error al Eliminar!',
+                                    '',
+                                    'error'
+                                )
+                            }
+                        }).fail(function () {
+                            Swal.fire(
+                                'No se pudo Eliminar!',
+                                'Aceptar!',
+                                'error'
+                            )
+
+                        });
+                        /**/
+                    }
+                })
+
+            });
+        });
 
 
-@{
-    ViewBag.Title = "Index";
+    </script>
 }
-
 
 
 

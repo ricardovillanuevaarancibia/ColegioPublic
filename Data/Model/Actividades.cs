@@ -18,7 +18,9 @@ namespace Data.Model
         public string Nombre { get; set; }
         public Nullable<System.DateTime> FechaInicio { get; set; }
         public Nullable<System.DateTime> FechaFin { get; set; }
+        public string Titulo { get; set; }
         public string Descripcion { get; set; }
+        public string Imagen { get; set; }
         public Nullable<int> EstadoId { get; set; }
     }
 }

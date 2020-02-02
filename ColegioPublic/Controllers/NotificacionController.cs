@@ -1,4 +1,5 @@
-﻿using ColegioPublic.ViewsModel.NotificacionVM;
+﻿using ColegioPublic.Extensions;
+using ColegioPublic.ViewsModel.NotificacionVM;
 using ColegioPublic.ViewsModel.UsuarioMovilVM;
 using System;
 using System.Collections.Generic;
@@ -37,12 +38,12 @@ namespace ColegioPublic.Controllers
                 throw;
             }
         }
-        public ActionResult AddNotification(int usuarioId)
+        public ActionResult AddNotification(int usuarioId,int?NotificacionId)
         {
             try
             {
                 AddEditNotificacionViewModel model = new AddEditNotificacionViewModel();
-                model.Fill(_CargarDatosContext,usuarioId);
+                model.Fill(_CargarDatosContext,usuarioId,NotificacionId);
                 return View(model);
             }
             catch (Exception)
@@ -57,24 +58,30 @@ namespace ColegioPublic.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    TryUpdateModel(model);
+                    return View(model);
+                }
                 AddEditNotificacionViewModel addNotificacion = new AddEditNotificacionViewModel();
                 addNotificacion.AddEditNotificacion(_CargarDatosContext, model);
+                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
                 return View("Index");
             }
             catch (Exception)
             {
-
-                throw;
+                this.AddNotification($"Error al guardar datos", NotificationType.ERROR);
+                return View(model);
             }
         }
 
-        public ActionResult Delete(int NotificacionId)
+        public ActionResult Delete(int NoficacionId)
         {
 
             try
             {
                 AddEditNotificacionViewModel model = new AddEditNotificacionViewModel();
-                model.Delete(_CargarDatosContext, NotificacionId);
+                model.Delete(_CargarDatosContext, NoficacionId);
                 return Json(new { Value = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)

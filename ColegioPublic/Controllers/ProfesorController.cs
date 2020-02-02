@@ -1,4 +1,5 @@
-﻿using ColegioPublic.ViewsModel.AlumnoVM;
+﻿using ColegioPublic.Extensions;
+using ColegioPublic.ViewsModel.AlumnoVM;
 using ColegioPublic.ViewsModel.ProfesorVM;
 using System;
 using System.Collections.Generic;
@@ -49,13 +50,14 @@ namespace ColegioPublic.Controllers
                 }
                 AddEditProfesorViewModel addEdit = new AddEditProfesorViewModel();
                 addEdit.AddEdit(_CargarDatosContext, model);
+                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
 
                 return RedirectToAction("Index");
             }
             catch (Exception)
             {
-
-                throw;
+                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.ERROR);
+                return View(model);
             }
         }
         public ActionResult Delete(int ProfesorId)

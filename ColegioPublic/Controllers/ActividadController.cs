@@ -1,4 +1,5 @@
-﻿using ColegioPublic.ViewsModel.ActividadVM;
+﻿using ColegioPublic.Extensions;
+using ColegioPublic.ViewsModel.ActividadVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,16 +42,15 @@ namespace ColegioPublic.Controllers
                     TryUpdateModel(model);
                     return View(model);
                 }
-
                 AddEditActividadViewModel addEdit = new AddEditActividadViewModel();
                 addEdit.AddEdit(_CargarDatosContext, model);
-
+                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+              
+                return View(model);
             }
         }
         public JsonResult Delete(int ActividadId)

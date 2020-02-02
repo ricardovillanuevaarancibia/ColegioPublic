@@ -1,4 +1,5 @@
-﻿using ColegioPublic.ViewsModel.AlumnoVM;
+﻿using ColegioPublic.Extensions;
+using ColegioPublic.ViewsModel.AlumnoVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,22 +43,22 @@ namespace ColegioPublic.Controllers
                     TryUpdateModel(model);
                     return View(model);
                 }
-                if (model.Image != null)
-                {
-                    string archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.Image.FileName).ToLower();
-                    model.Image.SaveAs(Server.MapPath("~/File/Alumno/" + archivo));
-                    model.RutaFoto = Server.MapPath("~/File/Alumno/" + archivo);
-                }
+                //if (model.Image != null)
+                //{
+                //    string archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.Image.FileName).ToLower();
+                //    model.Image.SaveAs(Server.MapPath("~/File/Alumno/" + archivo));
+                //    model.RutaFoto = Server.MapPath("~/File/Alumno/" + archivo);
+                //}
 
                 AddEditAlumnoViewModel addEdit = new AddEditAlumnoViewModel();
                 addEdit.AddEdit(_CargarDatosContext, model);
-
+                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                this.AddNotification($"Error al guardar datos ", NotificationType.ERROR);
+                return View(model);
             }
         }
         public ActionResult Delete(int AlumnoId)

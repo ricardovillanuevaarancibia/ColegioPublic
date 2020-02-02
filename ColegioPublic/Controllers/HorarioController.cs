@@ -1,4 +1,5 @@
-﻿using ColegioPublic.ViewsModel.HorarioVM;
+﻿using ColegioPublic.Extensions;
+using ColegioPublic.ViewsModel.HorarioVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,11 +30,12 @@ namespace ColegioPublic.Controllers
             {
                 var modelo = new AddEditHorarioViewModel();
                 modelo.GuardarHorario(_CargarDatosContext, model);
+                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
             catch (Exception)
             {
-
+                this.AddNotification($"Error al guardar datos ", NotificationType.ERROR);
                 return RedirectToAction("Index");
             }
   

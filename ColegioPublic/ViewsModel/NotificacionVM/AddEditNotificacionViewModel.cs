@@ -12,7 +12,7 @@ namespace ColegioPublic.ViewsModel.NotificacionVM
     public class AddEditNotificacionViewModel
     {
         
-        public int NotificacionId { get; set; }
+        public int ? NotificacionId { get; set; }
         public string Comentario { get; set; }
         [Display(Name="Tipo de Notificación")]
         public int? TipoNotificacionId { get; set; }
@@ -23,13 +23,22 @@ namespace ColegioPublic.ViewsModel.NotificacionVM
         public int UsuarioSendId { get; set; }
         [Display(Name="Usuario Registro")]
         public int UsuarioRegistro { get; set; }
+    
         public int EstadoId { get; set; }
 
-        public void Fill(CargarDatosContext context,int usuarioMovilId)
+        public void Fill(CargarDatosContext context,int usuarioMovilId,int ? NotificacionId)
         {
             try
             {
                 this.UsuarioSendId = usuarioMovilId;
+                var notificacion = context._context.Notificacion.Find(NotificacionId);
+                if (notificacion != null)
+                {
+                    this.NotificacionId = notificacion.NotificacionId;
+                    this.TipoNotificacionId = notificacion.TipoNotificacionId;
+                    this.Comentario = notificacion.Comentario;
+                }
+
                 this.LstTipoNotificacion = context._context.TipoGenerico.Where(x => x.TipoGenericoPadreId == 7).Select(x => new SelectListItem() {Value=x.TipoGenericoId.ToString(),Text = x.Nombre }).ToList();
             }
             catch (Exception ex)

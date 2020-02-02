@@ -125,6 +125,12 @@
     <Compile Include="Model\Silabo.cs">
       <DependentUpon>ColegioBd.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ColegioBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ColegioBd.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\TipoGenerico.cs">
       <DependentUpon>ColegioBd.tt</DependentUpon>
     </Compile>

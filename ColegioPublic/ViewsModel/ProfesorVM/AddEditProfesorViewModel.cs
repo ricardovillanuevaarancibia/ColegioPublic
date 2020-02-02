@@ -1,9 +1,16 @@
 ﻿using ColegioPublic.Helper;
 using ColegioPublic.ViewsModel.AlumnoVM;
+using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Transactions;
 using System.Web;
 
@@ -45,6 +52,8 @@ namespace ColegioPublic.ViewsModel.ProfesorVM
             {
                 try
                 {
+                   
+
                     var profesor = context._context.Profesor.Find(model.ProfesorId);
 
                     if (profesor == null)
@@ -55,20 +64,19 @@ namespace ColegioPublic.ViewsModel.ProfesorVM
                     profesor.Nombre = model.Nombre;
                     profesor.ApellidoPaterno = model.ApellidoPaterno;
                     profesor.ApellidoMaterno = model.ApellidoMaterno;
-                    profesor.RutaFoto = model.RutaFoto;
+                    profesor.RutaFoto = SendImage.ConvertToBase64(model.Image.InputStream);
                     profesor.EstadoId = 1;
-          
                     context._context.SaveChanges();
+                  
                     ts.Complete();
                 }
                 catch (Exception ex)
                 {
-
                     throw;
                 }
-
             }
         }
+  
         public void Delete(CargarDatosContext context, int profesorId)
         {
             var profesor = context._context.Profesor.Find(profesorId);

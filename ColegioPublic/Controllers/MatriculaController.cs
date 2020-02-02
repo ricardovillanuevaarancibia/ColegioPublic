@@ -1,4 +1,5 @@
-﻿using ColegioPublic.ViewsModel.MatriculaVM;
+﻿using ColegioPublic.Extensions;
+using ColegioPublic.ViewsModel.MatriculaVM;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,7 @@ namespace ColegioPublic.Controllers
                 string result = response.Content.ReadAsStringAsync().Result;
 
                 return  RedirectToAction("Index",new {q = model.alumnoId });
+                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
             }
         }
 

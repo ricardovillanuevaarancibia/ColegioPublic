@@ -1,4 +1,5 @@
-﻿using ColegioPublic.ViewsModel.NotaVM;
+﻿using ColegioPublic.Extensions;
+using ColegioPublic.ViewsModel.NotaVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,10 +34,21 @@ namespace ColegioPublic.Controllers
         [HttpPost]
         public ActionResult AddEditNota(AddEditNotaViewModel model ,FormCollection formCollection)
         {
-            AddEditNotaViewModel newNotas = new AddEditNotaViewModel();
-            newNotas.AddEdit(_CargarDatosContext, model, formCollection);
+            try
+            {
+                AddEditNotaViewModel newNotas = new AddEditNotaViewModel();
+                newNotas.AddEdit(_CargarDatosContext, model, formCollection);
+                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                this.AddNotification($"Error al guardar Notas", NotificationType.ERROR);
+                throw;
+            }
+   
          
-            return RedirectToAction("Index");
+   
         }
 
     }

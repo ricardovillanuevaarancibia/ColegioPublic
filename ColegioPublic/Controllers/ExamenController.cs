@@ -1,4 +1,5 @@
-﻿using ColegioPublic.ViewsModel.ExamenVM;
+﻿using ColegioPublic.Extensions;
+using ColegioPublic.ViewsModel.ExamenVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,11 +31,12 @@ namespace ColegioPublic.Controllers
             {
                 var modelo = new AddEditExamenViewModel();
                 modelo.GuardarExamen(_CargarDatosContext, model);
+                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                this.AddNotification($"Error al guardar datos ", NotificationType.ERROR);
                 return RedirectToAction("Index");
             }
 

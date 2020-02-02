@@ -1,12 +1,12 @@
 ﻿@model ColegioPublic.ViewsModel.CursoVM.AddEditCursoViewModel
 @{
-    ViewBag.Title = "Agregar Curso";
+    ViewBag.Title =Model.cursoId.HasValue ? "Agregar " : "Editar " + " Curso";
 }
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">@(Model.cursoId.HasValue ? "Modificar " : "Editar ")Curso</h4>
+                <h4 class="card-title">@(Model.cursoId.HasValue ? "Agregar " : "Editar ")Curso</h4>
                 <form class="form" action="@Url.Action("AddEditCurso","Curso")" method="post">
                     @Html.HiddenFor(x => x.cursoId)
                     <div class="form-group mt-5 row">
