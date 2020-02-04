@@ -27,6 +27,7 @@ namespace Data.Model
         public Nullable<int> UsuarioSendId { get; set; }
         public Nullable<int> UsuarioRegistroId { get; set; }
         public Nullable<int> EstadoId { get; set; }
+        public string Titulo { get; set; }
     
         public virtual TipoGenerico TipoGenerico { get; set; }
         public virtual Usuario Usuario { get; set; }

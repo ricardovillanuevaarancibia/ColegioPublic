@@ -1,4 +1,5 @@
 ﻿using ColegioPublic.Extensions;
+using ColegioPublic.Helper;
 using ColegioPublic.ViewsModel.AlumnoVM;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace ColegioPublic.Controllers
         // GET: Alumno
         public ActionResult Index(IndexAlumnoViewModel model)
         {
+      
             model.Fill(_CargarDatosContext, model);
             return View(model);
         }

@@ -208,6 +208,7 @@
     <Compile Include="ViewsModel\CursoVM\_ListCursoViewModel.cs" />
     <Compile Include="ViewsModel\ExamenVM\AddEditExamenViewModel.cs" />
     <Compile Include="ViewsModel\ExamenVM\IndexExamenViewModel.cs" />
+    <Compile Include="ViewsModel\ExamenVM\ListExamenViewModel.cs" />
     <Compile Include="ViewsModel\ExamenVM\_ListExamenViewModel.cs" />
     <Compile Include="ViewsModel\GradoAcademico\AddEditGradoAcademicoViewModel.cs" />
     <Compile Include="ViewsModel\GradoAcademico\IndexGradoAcademicoViewModel.cs" />
@@ -1210,6 +1211,8 @@
     <Content Include="Views\Shared\_Notifications.cshtml" />
     <Content Include="Views\Examen\IndexCurso.cshtml" />
     <Content Include="Views\Examen\_ListCurso.cshtml" />
+    <Content Include="Views\Examen\ListaExamen.cshtml" />
+    <Content Include="Views\Profesor\ListCursoAsignados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

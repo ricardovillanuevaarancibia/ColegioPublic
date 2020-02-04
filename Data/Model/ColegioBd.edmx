@@ -188,6 +188,7 @@
           <Property Name="UsuarioSendId" Type="int" />
           <Property Name="UsuarioRegistroId" Type="int" />
           <Property Name="EstadoId" Type="int" />
+          <Property Name="Titulo" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="NotificacionRespuesta">
           <Key>
@@ -228,6 +229,16 @@
           <Property Name="SilabosId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CursoGradoAcademicoId" Type="int" />
           <Property Name="EstadoId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TipoGenerico">
           <Key>
@@ -672,6 +683,7 @@
           <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Profesor" EntityType="Self.Profesor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Silabo" EntityType="Self.Silabo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoGenerico" EntityType="Self.TipoGenerico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
@@ -848,6 +860,7 @@
           <EntitySet Name="Permiso" EntityType="ColegioBdModel.Permiso" />
           <EntitySet Name="Profesor" EntityType="ColegioBdModel.Profesor" />
           <EntitySet Name="Silabo" EntityType="ColegioBdModel.Silabo" />
+          <EntitySet Name="sysdiagrams" EntityType="ColegioBdModel.sysdiagrams" />
           <EntitySet Name="TipoGenerico" EntityType="ColegioBdModel.TipoGenerico" />
           <EntitySet Name="User" EntityType="ColegioBdModel.User" />
           <EntitySet Name="Usuario" EntityType="ColegioBdModel.Usuario" />
@@ -968,7 +981,7 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="UsuarioAlumno" EntitySet="UsuarioAlumno" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -1202,6 +1215,7 @@
           <Property Name="UsuarioSendId" Type="Int32" />
           <Property Name="UsuarioRegistroId" Type="Int32" />
           <Property Name="EstadoId" Type="Int32" />
+          <Property Name="Titulo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TipoGenerico" Relationship="ColegioBdModel.FK_Notificacion_TipoNotificacion" FromRole="Notificacion" ToRole="TipoGenerico" />
           <NavigationProperty Name="Usuario" Relationship="ColegioBdModel.FK_Notificacion_Usuario" FromRole="Notificacion" ToRole="Usuario" />
           <NavigationProperty Name="NotificacionRespuesta" Relationship="ColegioBdModel.FK_NotificacionRespuesta_Notificacion" FromRole="Notificacion" ToRole="NotificacionRespuesta" />
@@ -1251,6 +1265,16 @@
           <Property Name="CursoGradoAcademicoId" Type="Int32" />
           <Property Name="EstadoId" Type="Int32" />
           <NavigationProperty Name="GradoAcademicoCurso" Relationship="ColegioBdModel.FK_Silabo_CursoGradoAcademico" FromRole="Silabo" ToRole="GradoAcademicoCurso" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TipoGenerico">
           <Key>
@@ -1873,6 +1897,7 @@
           <EntitySetMapping Name="Notificacion">
             <EntityTypeMapping TypeName="ColegioBdModel.Notificacion">
               <MappingFragment StoreEntitySet="Notificacion">
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
                 <ScalarProperty Name="UsuarioRegistroId" ColumnName="UsuarioRegistroId" />
                 <ScalarProperty Name="UsuarioSendId" ColumnName="UsuarioSendId" />
@@ -1927,6 +1952,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ColegioBdModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TipoGenerico">
             <EntityTypeMapping TypeName="ColegioBdModel.TipoGenerico">
               <MappingFragment StoreEntitySet="TipoGenerico">
@@ -1974,7 +2010,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

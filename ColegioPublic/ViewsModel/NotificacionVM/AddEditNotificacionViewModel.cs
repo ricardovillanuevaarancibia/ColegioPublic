@@ -23,7 +23,7 @@ namespace ColegioPublic.ViewsModel.NotificacionVM
         public int UsuarioSendId { get; set; }
         [Display(Name="Usuario Registro")]
         public int UsuarioRegistro { get; set; }
-    
+        public string Titulo { get; set; }
         public int EstadoId { get; set; }
 
         public void Fill(CargarDatosContext context,int usuarioMovilId,int ? NotificacionId)
@@ -36,6 +36,7 @@ namespace ColegioPublic.ViewsModel.NotificacionVM
                 {
                     this.NotificacionId = notificacion.NotificacionId;
                     this.TipoNotificacionId = notificacion.TipoNotificacionId;
+                    this.Titulo = notificacion.Titulo;
                     this.Comentario = notificacion.Comentario;
                 }
 
@@ -50,15 +51,27 @@ namespace ColegioPublic.ViewsModel.NotificacionVM
         {
             try
             {
-                var notificacion = new Notificacion();
+                var notificacion = context._context.Notificacion.Find(model.NotificacionId);
+                if (notificacion == null)
+                {
+                    notificacion = new Notificacion();
+                    notificacion.FechaRegistro = DateTime.Now;
+                    context._context.Notificacion.Add(notificacion);
+                }
                 notificacion.Comentario = model.Comentario;
                 notificacion.TipoNotificacionId = model.TipoNotificacionId??1;
-                notificacion.FechaRegistro = DateTime.Now;
+         
                 notificacion.UsuarioRegistroId = context._session.Get<int>(SessionExtencion.Datos.UsuarioId);
                 notificacion.UsuarioSendId = model.UsuarioSendId;
+                notificacion.Titulo = model.Titulo;
                 notificacion.EstadoId = 1;
-                context._context.Notificacion.Add(notificacion);
+              
+                var telefonoUserMessage = context._context.Usuario.Find(model.UsuarioSendId).Telefono;
+                if(!string.IsNullOrEmpty(telefonoUserMessage))
+                    SendImage.EnviarWhatsap(telefonoUserMessage);
+
                 context._context.SaveChanges();
+
             }
             catch (Exception ex)
             {

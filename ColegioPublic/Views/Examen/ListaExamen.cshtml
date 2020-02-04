@@ -1,46 +1,44 @@
-﻿@model ColegioPublic.ViewsModel.NotificacionVM._ListNotificacionViewModel
+﻿@model ColegioPublic.ViewsModel.ExamenVM.ListExamenViewModel
 @{
-    ViewBag.Title = "_ListNotificacion";
+    ViewBag.Title = "Lista Examen";
 }
-
-<h2>Lista de Notificaciones</h2>
 <table class="table">
     <thead class="thead-dark">
         <tr>
-            <th>Comentario</th>
-            <th>Fecha</th>
+            <th>Tipo Examen</th>
+            <th>Fecha Examen</th>
             <th>Opciones</th>
         </tr>
     </thead>
 
     <tbody>
-        @if (Model.LstRegistro.Count > 0)
+        @if (Model.LstExamen.Count > 0)
         {
-            foreach (var item in Model.LstRegistro)
+            foreach (var item in Model.LstExamen)
             {
-                <tr id="@item.NotificacionId">
-                    <td>@item.Comentario</td>
-                    <td>@item.FechaRegistro.Value.ToShortDateString()</td>
+                <tr id="@item.ExamenId">
+                    <td>@item.TipoGenerico.Nombre</td>
+                    <td>@item.FechaExamen.Value.ToLongDateString()</td>
                     <td>
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</button>
                             <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(696px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                <a class="dropdown-item" href="@Url.Action("AddNotification","Notificacion", new {UsuarioId = item.UsuarioSendId,NotificacionId = item.NotificacionId})">Editar</a>
-                                <a class="dropdown-item eliminarNotificacion" data-padre="@item.NotificacionId" href="@Url.Action("Delete","Notificacion", new {NotificacionId = item.NotificacionId})">Eliminar</a>
+                                <a class="dropdown-item eliminarExamen" data-padre="@item.ExamenId" href="@Url.Action("Delete","Examen", new {ExamenId = item.ExamenId})">Eliminar</a>
                             </div>
                         </div>
                     </td>
                 </tr>
             }
         }
-
     </tbody>
 </table>
+
+
 @section scripts{
     <script>
 
       $(function () {
-          $(".eliminarNotificacion").click(function (e) {
+          $(".eliminarExamen").click(function (e) {
               e.preventDefault();
               var url = $(this).attr("href");
               var padre = $(this).attr("data-padre");
@@ -90,16 +88,12 @@
                               'Aceptar!',
                               'error'
                           )
-
-                      });
+                     });
                       /**/
                   }
               })
 
           });
         });
-
-
     </script>
 }
-

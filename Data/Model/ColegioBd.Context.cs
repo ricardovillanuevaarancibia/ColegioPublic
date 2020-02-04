@@ -47,6 +47,7 @@ namespace Data.Model
         public virtual DbSet<Permiso> Permiso { get; set; }
         public virtual DbSet<Profesor> Profesor { get; set; }
         public virtual DbSet<Silabo> Silabo { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TipoGenerico> TipoGenerico { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }

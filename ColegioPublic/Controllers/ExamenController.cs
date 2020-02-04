@@ -1,4 +1,5 @@
 ﻿using ColegioPublic.Extensions;
+
 using ColegioPublic.ViewsModel.CursoVM;
 using ColegioPublic.ViewsModel.ExamenVM;
 using System;
@@ -23,6 +24,13 @@ namespace ColegioPublic.Controllers
             _ListCursoViewModel listModel = new _ListCursoViewModel();
             await listModel.FillList(_CargarDatosContext, model, p);
             return PartialView(listModel);
+        }
+
+        public ActionResult ListaExamen(int CursoId)
+        {
+            ListExamenViewModel model = new ListExamenViewModel();
+            model.Fill(_CargarDatosContext, CursoId);
+            return View(model);
         }
         // GET: Examen
         public ActionResult Index()

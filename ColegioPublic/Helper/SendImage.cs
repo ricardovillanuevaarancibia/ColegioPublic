@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 
 namespace ColegioPublic.Helper
@@ -53,5 +54,41 @@ namespace ColegioPublic.Helper
             }
             return urlImage;
         }
+
+        public static string EnviarWhatsap(string numero)
+        {
+            string yourId = "ccpRDrqqpESNkn/w/i2cDHJpY2FyZG92aWxsYW51ZXZhYXJhbmNpYmlhX2F0X2dtYWlsX2RvdF9jb20=";
+            string yourMobile = "+51"+numero;
+            string yourMessage = "Esto es un mensaje de prueba";
+            try
+            {
+                string url = "https://NiceApi.net/API";
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.Headers.Add("X-APIId", yourId);
+                request.Headers.Add("X-APIMobile", yourMobile);
+                using (StreamWriter streamOut = new StreamWriter(request.GetRequestStream()))
+                {
+                    streamOut.Write(yourMessage);
+                }
+                using (StreamReader streamIn = new StreamReader(request.GetResponse().GetResponseStream()))
+                {
+                    Console.WriteLine(streamIn.ReadToEnd());
+                }
+            }
+            catch (SystemException se)
+            {
+                return "";
+            }
+            return "";
+        }
+
+
+
+
+
+
+
     }
 }

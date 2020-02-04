@@ -65,6 +65,7 @@ namespace ColegioPublic.Controllers
                 }
                 AddEditNotificacionViewModel addNotificacion = new AddEditNotificacionViewModel();
                 addNotificacion.AddEditNotificacion(_CargarDatosContext, model);
+            
                 this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
                 return View("Index");
             }
@@ -75,13 +76,13 @@ namespace ColegioPublic.Controllers
             }
         }
 
-        public ActionResult Delete(int NoficacionId)
+        public ActionResult Delete(int NotificacionId)
         {
 
             try
             {
                 AddEditNotificacionViewModel model = new AddEditNotificacionViewModel();
-                model.Delete(_CargarDatosContext, NoficacionId);
+                model.Delete(_CargarDatosContext, NotificacionId);
                 return Json(new { Value = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
