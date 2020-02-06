@@ -40,6 +40,6 @@
 
     </tbody>
 </table>
-@Html.PagedListPager(Model.LstRegistro, p => Url.Action("_ListActividad", new { p = p,model = Model }), PaginationHelper.AjaxPagerOptionsDefault)
+@Html.PagedListPager(Model.LstRegistro, p => Url.Action("_ListActividad", new { p = p,model = Model.q }), PaginationHelper.AjaxPagerOptionsDefault)
 
 

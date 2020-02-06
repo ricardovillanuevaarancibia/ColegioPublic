@@ -44,7 +44,7 @@ namespace ColegioPublic.Controllers
             List<AddEditCursoViewModel> EmpInfo = new List<AddEditCursoViewModel>();
             using (var client = new HttpClient())
             {
-                model.cursoId = 0;
+                model.cursoId = model.cursoId??0;
                 model.estadoId = 1;
 
                 var json = JsonConvert.SerializeObject(model);

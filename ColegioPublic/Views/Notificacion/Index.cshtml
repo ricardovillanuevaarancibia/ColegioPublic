@@ -33,7 +33,8 @@
     <script>
 
         $(function () {
-            $(".eliminarNotificacion").click(function (e) {
+                $("#paged-section").on("click",".eliminarNotificacion",function (e) {
+      
                 e.preventDefault();
                 var url = $(this).attr("href");
                 debugger;

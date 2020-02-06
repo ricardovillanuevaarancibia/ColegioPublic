@@ -12,6 +12,7 @@ namespace ColegioPublic.ViewsModel.MatriculaVM
     public class AddEditMatriculaViewModel
     {
         public int ? matriculaId { get; set; }
+        [Required]
         [Display(Name ="Código Matricula")]
         public string codigoMatricula { get; set; }
         public int ? alumnoId { get; set; }
@@ -21,6 +22,7 @@ namespace ColegioPublic.ViewsModel.MatriculaVM
         [JsonIgnore]
         [Display(Name="Dni")]
         public string dniAlumno { get; set; }
+        [Required]
         [Display(Name="Grado Academico")]
         public int gradoAcademicoId { get; set; }
         [Display(Name="Fecha de Creación")]

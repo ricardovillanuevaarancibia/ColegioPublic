@@ -21,8 +21,9 @@ namespace ColegioPublic.ViewsModel.ActividadVM
         [Display(Name ="Descripción")]
         public string descripcion { get; set; }
         public string Titulo { get; set; }
-        public HttpPostedFileBase Image { get; set; }
         [Required]
+        public HttpPostedFileBase Image { get; set; }
+       
         [Display(Name = "Ruta de Foto")]
         public string Imagen { get; set; }
         public int EstadoId { get; set; }

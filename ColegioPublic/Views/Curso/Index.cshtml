@@ -32,7 +32,7 @@
     <script>
 
       $(function () {
-          $(".eliminarCurso").click(function (e) {
+          $("#paged-section").on("click",".eliminarCurso",function (e) {
               e.preventDefault();
               var url = $(this).attr("href");
               debugger;
@@ -44,7 +44,7 @@
                   showCancelButton: true,
                   confirmButtonColor: '#3085d6',
                   cancelButtonColor: '#d33',
-                  cancelButtonText:'Cancelar',
+                  cancelButtonText: 'Cancelar',
                   confirmButtonText: 'Si, Estoy seguro!'
               }).then((result) => {
                   if (result.value) {
@@ -66,26 +66,26 @@
                               ).then((result) => {
                                   if (result) {
                                       $("#Filtrar").submit();
-                                  }
+                                  };
                               });
                           } else {
                               Swal.fire(
                                   'Ocurrio algún error al Eliminar!',
                                   '',
                                   'error'
-                              )
+                              );
                           }
                       }).fail(function () {
                           Swal.fire(
                               'No se pudo Eliminar!',
                               'Aceptar!',
                               'error'
-                          )
+                          );
 
                       });
                       /**/
                   }
-              })
+              });
 
           });
         });

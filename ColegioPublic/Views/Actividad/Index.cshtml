@@ -32,8 +32,8 @@
 @section scripts{
     <script>
 
-      $(function () {
-          $(".eliminarActividad").click(function (e) {
+        $(function () {
+              $("#paged-section").on("click",".eliminarActividad",function (e) {
               e.preventDefault();
               var url = $(this).attr("href");
               debugger;

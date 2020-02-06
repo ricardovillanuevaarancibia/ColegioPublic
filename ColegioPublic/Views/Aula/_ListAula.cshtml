@@ -36,7 +36,7 @@
 
     </tbody>
 </table>
-@Html.PagedListPager(Model.LstRegistro, p => Url.Action("_ListAula", new { p = p,model = Model }), PaginationHelper.AjaxPagerOptionsDefault)
+@Html.PagedListPager(Model.LstRegistro, p => Url.Action("_ListAula", new { p = p,model = Model.q }), PaginationHelper.AjaxPagerOptionsDefault)
 
 
 

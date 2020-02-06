@@ -18,7 +18,8 @@ namespace ColegioPublic.Helper
         #region HttpSessionStateBase
 
 
-        public static T Get<T>(this HttpSessionStateBase session, Datos key)
+          
+            public static T Get<T>(this HttpSessionStateBase session, Datos key)
             {
                 var obj = session[key.ToString()];
 
@@ -28,14 +29,22 @@ namespace ColegioPublic.Helper
                 throw new Exception("Type '" + typeof(T).Name + "' doesn't match the type of the object retreived ('" + obj.GetType().Name + "').");
             }
             public static void Put<T>(this HttpSessionStateBase session, string name, object value) => session[name] = value;
+        public static string GetRol(this HttpSessionStateBase session)
+        {
+            var obj = session[Datos.Rol.ToString()].ToString();
+            return obj;
+        }
 
+        #endregion
 
-            #endregion
+        #region HttpSessionState
+        public static string GetRol(this HttpSessionState session)
+        {
+            var obj = session[Datos.Rol.ToString()].ToString();
+            return obj;
+        }
 
-            #region HttpSessionState
-
-
-            public static T Get<T>(this HttpSessionState session, Datos key)
+        public static T Get<T>(this HttpSessionState session, Datos key)
             {
                 var obj = session[key.ToString()];
 

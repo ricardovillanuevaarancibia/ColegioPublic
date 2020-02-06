@@ -12,10 +12,13 @@ namespace ColegioPublic.ViewsModel.AulaVM
     public class AddEditAulaViewModel
     {
         public int? AulaId { get; set; }
+        [Required]
         [Display(Name ="Código de Aula")]
         public string CodigoAula { get; set; }
+        [Required]
         [Display(Name="Capacidad Máxima")]
         public int CapacidadMax { get; set; }
+        [Required]
         [Display(Name="Estado")]
         public int EstadoId {get; set;}
         public void Fill(CargarDatosContext context, int? aulaId)

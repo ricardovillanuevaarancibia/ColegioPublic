@@ -32,8 +32,9 @@
 @section scripts{
     <script>
 
-      $(function () {
-          $(".eliminarMatricula").click(function (e) {
+        $(function () {
+          $("#paged-section").on("click",".eliminarMatricula",function (e) {
+
               e.preventDefault();
               var url = $(this).attr("href");
               debugger;

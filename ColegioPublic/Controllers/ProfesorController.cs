@@ -42,12 +42,12 @@ namespace ColegioPublic.Controllers
                     TryUpdateModel(model);
                     return View(model);
                 }
-                if (model.Image != null)
-                {
-                    string archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.Image.FileName).ToLower();
-                    model.Image.SaveAs(Server.MapPath("~/File/Profesor/" + archivo));
-                    model.RutaFoto = Server.MapPath("~/File/Profesor/" + archivo);
-                }
+                //if (model.Image != null)
+                //{
+                //    string archivo = (DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.Image.FileName).ToLower();
+                //    model.Image.SaveAs(Server.MapPath("~/File/Profesor/" + archivo));
+                //    model.RutaFoto = Server.MapPath("~/File/Profesor/" + archivo);
+                //}
                 AddEditProfesorViewModel addEdit = new AddEditProfesorViewModel();
                 addEdit.AddEdit(_CargarDatosContext, model);
                 this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.SUCCESS);
@@ -56,7 +56,7 @@ namespace ColegioPublic.Controllers
             }
             catch (Exception)
             {
-                this.AddNotification($"Se Guardaron correctamente los datos", NotificationType.ERROR);
+                this.AddNotification($"Ocurrio un error al guardar profesor", NotificationType.ERROR);
                 return View(model);
             }
         }

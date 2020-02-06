@@ -1,4 +1,11 @@
-﻿<aside class="left-sidebar">
+﻿@using ColegioPublic.Helper
+@{
+   
+    var rol = Session.GetRol();
+}
+
+
+<aside class="left-sidebar">
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar">
         <!-- User profile -->
@@ -7,7 +14,7 @@
             <div class="profile-img"> <img src="~/Content/assets/images/users/1.jpg" alt="user" /> </div>
             <!-- User profile text-->
             <div class="profile-text">
-              
+
             </div>
         </div>
         <!-- End User profile text-->
@@ -15,18 +22,22 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="nav-small-cap">PERSONAL</li>
-                <li>
-                    <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Matenimiento <span class="label label-rounded label-success">5</span></span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="@Url.Action("Index","Alumno")">Alumno</a></li>
-                        <li><a href="@Url.Action("Index","Curso")">Curso</a></li>
-                        <li><a href="@Url.Action("Index","Profesor")">Profesor</a></li>
-                        <li><a href="@Url.Action("Index","Aula")">Aulas</a></li>
-                        <li><a href="@Url.Action("Index","Actividad")">Actividades</a></li>
-                        <li><a href="@Url.Action("Index","UsuarioMovil")">Usuarios APP</a></li>
-                        <li><a href="@Url.Action("Index","User")">Usuarios Web</a></li>
-                    </ul>
-                </li>
+                @if (rol.Equals("admin"))
+                {
+                    <li>
+                        <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Matenimiento <span class="label label-rounded label-success">5</span></span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="@Url.Action("Index","Alumno")">Alumno</a></li>
+                            <li><a href="@Url.Action("Index","Curso")">Curso</a></li>
+                            <li><a href="@Url.Action("Index","Profesor")">Profesor</a></li>
+                            <li><a href="@Url.Action("Index","Aula")">Aulas</a></li>
+                            <li><a href="@Url.Action("Index","Actividad")">Actividades</a></li>
+                            <li><a href="@Url.Action("Index","UsuarioMovil")">Usuarios APP</a></li>
+                            <li><a href="@Url.Action("Index","User")">Usuarios Web</a></li>
+                        </ul>
+                    </li>
+                }
+
                 <li>
                     <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Operaciones</span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -45,7 +56,7 @@
     <div class="sidebar-footer text-center">
 
         <a href="@Url.Action("CerrarSesion","login")" class="link text-center" data-toggle="tooltip" title="Cerrar Sesión"><i class="mdi mdi-power"></i></a>
-   
+
     </div>
     <!-- End Bottom points-->
 </aside>

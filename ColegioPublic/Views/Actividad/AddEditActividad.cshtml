@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">@(Model.ActividadId.HasValue ? "Modificar " : "Editar ")Actividad</h4>
-                <form class="form" action="@Url.Action("AddEditActividad","Actividad")" method="post">
+                <form class="form" action="@Url.Action("AddEditActividad","Actividad")" method="post" enctype="multipart/form-data">
                     @Html.HiddenFor(x => x.ActividadId)
                     <div class="form-group mt-5 row">
                         @Html.LabelFor(x => x.Nombre, new { @class = "col-2 col-form-label" })
@@ -65,8 +65,8 @@
 
                     <div class="form-actions">
                         <div class="card-body">
-                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                            <button type="button" class="btn btn-dark">Cancel</button>
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Guardar</button>
+                            <a href="@Url.Action("Index","Actividad")">Cancelar</a>
                         </div>
                     </div>
 

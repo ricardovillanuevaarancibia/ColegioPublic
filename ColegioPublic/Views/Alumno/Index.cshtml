@@ -32,8 +32,8 @@
 @section scripts{
     <script>
 
-      $(function () {
-          $(".eliminarAlumno").click(function (e) {
+        $(function () {
+          $("#paged-section").on("click",".eliminarAlumno",function (e) {
               e.preventDefault();
               var url = $(this).attr("href");
               debugger;

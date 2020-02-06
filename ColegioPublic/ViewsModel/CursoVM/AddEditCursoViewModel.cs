@@ -11,6 +11,7 @@ namespace ColegioPublic.ViewsModel.CursoVM
     public class AddEditCursoViewModel
     {
         public int? cursoId { get; set; }
+        [Required]
         [Display(Name ="Nombre")]
         public string nombre { get; set; }
         [Display(Name ="Imagen")]

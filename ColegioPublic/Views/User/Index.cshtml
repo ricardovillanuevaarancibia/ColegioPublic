@@ -31,8 +31,8 @@
 @section scripts{
     <script>
 
-      $(function () {
-          $(".eliminarUser").click(function (e) {
+        $(function () {
+               $("#paged-section").on("click",".eliminarUser",function (e) {
               e.preventDefault();
               var url = $(this).attr("href");
               debugger;

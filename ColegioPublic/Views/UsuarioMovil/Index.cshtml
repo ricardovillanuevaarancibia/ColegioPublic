@@ -33,10 +33,10 @@
 @section scripts{
     <script>
 
-      $(function () {
-          $(".eliminarUsuario").click(function (e) {
+        $(function () {
+              $("#paged-section").on("click",".eliminarUsuario",function (e) {
               e.preventDefault();
-              var url = $(this).attr("href");
+              var url = $(this).attr("href");s
               debugger;
               var formData = new FormData();
               Swal.fire({

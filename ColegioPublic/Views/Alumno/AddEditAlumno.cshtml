@@ -15,6 +15,7 @@
                         <div class="col-10">
                             @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
                         </div>
+                        @Html.ValidationMessageFor(x => x.Nombre)
                     </div>
                     <div class="form-group row">
                         @Html.LabelFor(x => x.ApellidoPaterno, new { @class = "col-2 col-form-label" })
@@ -22,6 +23,7 @@
                         <div class="col-10">
                             @Html.TextBoxFor(x => x.ApellidoPaterno, new { @class = "form-control" })
                         </div>
+                        @Html.ValidationMessageFor(x => x.ApellidoPaterno)
                     </div>
                     <div class="form-group row">
                         @Html.LabelFor(x => x.ApellidoMaterno, new { @class = "col-2 col-form-label" })
@@ -29,6 +31,7 @@
                         <div class="col-10">
                             @Html.TextBoxFor(x => x.ApellidoMaterno, new { @class = "form-control" })
                         </div>
+                        @Html.ValidationMessageFor(x => x.ApellidoMaterno)
                     </div>
                     <div class="form-group row">
                         @Html.LabelFor(x => x.Dni, new { @class = "col-2 col-form-label" })
@@ -36,6 +39,7 @@
                         <div class="col-10">
                             @Html.TextBoxFor(x => x.Dni, new { @class = "form-control" })
                         </div>
+                        @Html.ValidationMessageFor(x => x.Dni)
                     </div>
                     <div class="form-group row">
 
@@ -45,6 +49,7 @@
 
                             @Html.TextBoxFor(x => x.FechaNacimiento, "{0:dd/MM/yyyy}", new { @class = "form-control datetimepicker1" })
                         </div>
+                        @Html.ValidationMessageFor(x => x.FechaNacimiento)
                     </div>
                     <div class="form-group">
                         <label>Custom File upload</label>
@@ -57,12 +62,14 @@
                                 <label class="custom-file-label" id="nameFile" for="Image">Choose file</label>
                             </div>
                         </div>
+                        @Html.ValidationMessageFor(x => x.Image)
                     </div>
 
                     <div class="form-actions">
                         <div class="card-body">
-                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                            <button type="button" class="btn btn-dark">Cancel</button>
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Guardar</button>
+                            <a href="@Url.Action("Index","Alumno")">Cancelar</a>
+                         
                         </div>
                     </div>
 

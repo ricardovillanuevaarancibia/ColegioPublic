@@ -12,12 +12,17 @@ namespace ColegioPublic.ViewsModel.AlumnoVM
     public class AddEditAlumnoViewModel
     {
         public int? AlumnoId { get; set; }
+        [Required]
         public string Nombre { get; set; }
+        [Required]
         [Display(Name = "Apellido Paterno")]
         public string ApellidoPaterno { get; set; }
+        [Required]
         [Display(Name = "Apellido Materno")]
         public string ApellidoMaterno { get; set; }
+        [Required]
         public string Dni { get; set; }
+        [Required]
         [Display(Name = "Fecha de Nacimiento")]
         public DateTime? FechaNacimiento { get; set; }
         public int EstadoId { get; set; }
